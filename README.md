@@ -177,6 +177,20 @@ Start it like this:
 $ docker-compose up
 ```
 
+
+## Installing additional Lua rocks
+
+While building images from tarantool, pass arguments to it via ARG before calling FROM:
+
+```Dockerfile
+ARG ADD_LUA_ROCKS='penlight 1.5.4-1;ldoc 1.4.6-2'
+
+FROM tarantool/tarantool:1.7
+# ...
+
+```
+
+
 ## Adding application code with a volume mount
 
 The simplest way to provide application code is to mount your code

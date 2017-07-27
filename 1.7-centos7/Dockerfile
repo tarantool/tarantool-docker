@@ -1,6 +1,8 @@
 FROM centos:7
 MAINTAINER mail@racktear.com
 
+ARG ADD_LUA_ROCKS=''
+
 RUN groupadd tarantool \
     && adduser -g tarantool tarantool
 
@@ -251,6 +253,14 @@ RUN set -x \
     && git clone $LUAROCK_GPERFTOOLS_REPO /rocks/gperftools \
     && (cd /rocks/gperftools; git checkout $LUAROCK_GPERFTOOLS_TAG) \
     && (cd /rocks/gperftools && luarocks make *rockspec) \
+    && : "---------- installing additional lua rocks ----------" \
+    && var="$ADD_LUA_ROCKS" \
+    && while [ "${var}" ] ;do \
+        iter="${var%%;*}"; \
+        [ -n "${iter}" ] && sh -c "luarocks install $iter"; \
+        [ "${var}" = "${iter}" ] \
+        && var='' || var="${var#*;}"; \
+        done
     && : "---------- remove build deps ----------" \
     && rm -rf /rocks \
     && yum -y remove \
