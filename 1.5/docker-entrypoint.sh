@@ -31,7 +31,7 @@ try_init_db()
             echo "work_dir=/opt/tarantool" > $CFG
             echo "memcached_port=11211" >> $CFG
             echo "primary_port=3301" >> $CFG
-            echo "admin_port=3305" >> $CFG
+            echo "admin_port=3302" >> $CFG
             echo "replication_port=3310" >> $CFG
             echo "snap_dir=/var/lib/tarantool" >> $CFG
             echo "wal_dir=/var/lib/tarantool" >> $CFG
@@ -60,14 +60,16 @@ try_init_db()
 }
 
 if [ "$1" = 'tarantool_box' -a "$(id -u)" = '0' ]; then
+    try_init_db
     chown -R tarantool /var/lib/tarantool
+    
+    echo "change permission"
     exec su-exec tarantool "$0" "$@"
 fi
 
 # entry point wraps the passed script to do basic setup
 if [ "$1" = 'tarantool_box' ]; then
     shift
-    try_init_db
     exec tarantool_box "$@"
 fi
 
