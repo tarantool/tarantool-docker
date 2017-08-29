@@ -60,14 +60,16 @@ try_init_db()
 }
 
 if [ "$1" = 'tarantool_box' -a "$(id -u)" = '0' ]; then
+    try_init_db
     chown -R tarantool /var/lib/tarantool
+    
+    echo "change permission"
     exec su-exec tarantool "$0" "$@"
 fi
 
 # entry point wraps the passed script to do basic setup
 if [ "$1" = 'tarantool_box' ]; then
     shift
-    try_init_db
     exec tarantool_box "$@"
 fi
 
