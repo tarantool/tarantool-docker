@@ -53,22 +53,17 @@ try_init_db()
         echo
         echo "Initializing database:"
 
-        tarantool_box -c $CFG --init-storage
+        su-exec tarantool tarantool_box -c $CFG --init-storage
 
         echo
     fi
 }
 
-if [ "$1" = 'tarantool_box' -a "$(id -u)" = '0' ]; then
-    chown -R tarantool /var/lib/tarantool
-    exec su-exec tarantool "$0" "$@"
-fi
-
 # entry point wraps the passed script to do basic setup
 if [ "$1" = 'tarantool_box' ]; then
     shift
     try_init_db
-    exec tarantool_box "$@"
+    exec su-exec tarantool tarantool_box "$@"
 fi
 
 exec "$@"
