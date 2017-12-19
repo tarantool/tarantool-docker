@@ -1,6 +1,8 @@
 FROM alpine:3.5
 MAINTAINER mail@racktear.com
 
+ARG ADD_LUA_ROCKS=''
+
 RUN addgroup -S tarantool \
     && adduser -S -G tarantool tarantool \
     && apk add --no-cache 'su-exec>=0.2'
@@ -248,6 +250,14 @@ RUN set -x \
     && git clone $LUAROCK_GPERFTOOLS_REPO /rocks/gperftools \
     && git -C /rocks/gperftools checkout $LUAROCK_GPERFTOOLS_TAG \
     && (cd /rocks/gperftools && luarocks make *rockspec) \
+    && : "---------- installing additional lua rocks ----------" \
+    && var="$ADD_LUA_ROCKS" \
+    && while [ "${var}" ] ;do \
+        iter="${var%%;*}"; \
+        [ -n "${iter}" ] && sh -c "luarocks install $iter"; \
+        [ "${var}" = "${iter}" ] \
+        && var='' || var="${var#*;}"; \
+        done
     && : "---------- remove build deps ----------" \
     && apk del .build-deps \
     && rm -rf /rocks

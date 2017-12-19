@@ -1,6 +1,8 @@
 FROM alpine:3.4
 MAINTAINER mail@racktear.com
 
+ARG ADD_LUA_ROCKS=''
+
 RUN addgroup -S tarantool \
     && adduser -S -G tarantool tarantool \
     && apk add --no-cache 'su-exec>=0.2'
@@ -78,6 +80,14 @@ RUN set -x \
         make install) \
     && rm -r /usr/src/luarocks \
     && rm -rf /usr/src/tarantool \
+    && : "---------- installing additional lua rocks ----------" \
+    && var="$ADD_LUA_ROCKS" \
+    && while [ "${var}" ] ;do \
+        iter="${var%%;*}"; \
+        [ -n "${iter}" ] && sh -c "luarocks install $iter"; \
+        [ "${var}" = "${iter}" ] \
+        && var='' || var="${var#*;}"; \
+        done
     && : "---------- remove build deps ----------" \
     && apk del .build-deps
 
