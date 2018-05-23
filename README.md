@@ -252,6 +252,10 @@ Example:
 
 `user1:pass@host1:3301,user2:pass@host2:3301`
 
+### `TARANTOOL_READ_ONLY`
+
+Optional. Boolean. Specifies if Tarantool should be started in read only mode. Default is false. (NB: implemented for 1.7, 1.x, 2.x)
+
 ### `TARANTOOL_SLAB_ALLOC_ARENA`
 
 Optional. Specifies how much memory Tarantool allocates to actually
