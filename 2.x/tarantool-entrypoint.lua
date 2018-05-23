@@ -184,6 +184,7 @@ local function wrapper_cfg(override)
         file_cfg.TARANTOOL_PORT = os.getenv('TARANTOOL_PORT')
         file_cfg.TARANTOOL_WAL_MODE = os.getenv('TARANTOOL_WAL_MODE')
         file_cfg.TARANTOOL_REPLICATION_SOURCE = os.getenv('TARANTOOL_REPLICATION_SOURCE')
+        file_cfg.TARANTOOL_READ_ONLY=os.getenv('TARANTOOL_READ_ONLY')
         file_cfg.TARANTOOL_REPLICATION = os.getenv('TARANTOOL_REPLICATION')
         file_cfg.TARANTOOL_SNAPSHOT_PERIOD = os.getenv('TARANTOOL_SNAPSHOT_PERIOD')
         file_cfg.TARANTOOL_MEMTX_MEMORY = os.getenv('TARANTOOL_MEMTX_MEMORY')
@@ -238,6 +239,10 @@ local function wrapper_cfg(override)
     cfg.wal_dir = override.wal_dir or '/var/lib/tarantool'
     cfg.vinyl_dir = override.vinyl_dir or '/var/lib/tarantool'
     cfg.pid_file = override.pid_file or '/var/run/tarantool/tarantool.pid'
+
+    if file_cfg.TARANTOOL_READ_ONLY then
+        cfg.read_only = (file_cfg.TARANTOOL_READ_ONLY == 'true')
+    end
 
     local choice = choose_option('TARANTOOL_REPLICATION', 'TARANTOOL_REPLICATION_SOURCE', file_cfg)
     local replication_source_table = parse_replication_source(file_cfg[choice],
