@@ -4,7 +4,7 @@ MAINTAINER mail@racktear.com
 RUN groupadd tarantool \
     && adduser -g tarantool tarantool
 
-ENV TARANTOOL_VERSION=1.10.1-393-g4e7050855 \
+ENV TARANTOOL_VERSION=1.10.2-0-gc0d8063b6 \
     TARANTOOL_DOWNLOAD_URL=https://github.com/tarantool/tarantool.git \
     TARANTOOL_INSTALL_LUADIR=/usr/local/share/tarantool \
     LUAROCKS_URL=https://github.com/tarantool/luarocks/archive/6e6fe62d9409fe2103c0fd091cccb3da0451faf5.tar.gz \
@@ -69,6 +69,7 @@ RUN set -x \
     && wget http://download.icu-project.org/files/icu4c/62.1/icu4c-62_1-src.tgz \
     && mkdir -p /usr/src/icu \
         && tar -xzf icu4c-62_1-src.tgz -C /usr/src/icu --strip-components=1 \
+        && rm icu4c-62_1-src.tgz \
     && (cd /usr/src/icu/source; \
         chmod +x runConfigureICU configure install-sh; \
         ./runConfigureICU Linux/gcc; \
