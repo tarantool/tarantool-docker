@@ -70,6 +70,7 @@ RUN set -x \
         tcl \
         curl-dev \
         icu-dev \
+        wget \
     && : "---------- gperftools ----------" \
     && mkdir -p /usr/src/gperftools \
     && git clone "$GPERFTOOLS_REPO" /usr/src/gperftools \

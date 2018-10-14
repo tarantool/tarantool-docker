@@ -50,6 +50,7 @@ RUN set -x \
         postgresql-dev \
         lua-dev \
         mariadb-dev \
+        wget \
     && : "---------- tarantool ----------" \
     && mkdir -p /usr/src/tarantool \
     && git clone "$TARANTOOL_DOWNLOAD_URL" /usr/src/tarantool \

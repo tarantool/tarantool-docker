@@ -76,6 +76,7 @@ RUN set -x \
         libtool \
         linux-headers \
         go \
+        wget \
     && : "---------- gperftools ----------" \
     && mkdir -p /usr/src/gperftools \
     && git clone "$GPERFTOOLS_REPO" /usr/src/gperftools \
