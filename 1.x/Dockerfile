@@ -158,7 +158,6 @@ RUN set -x \
         lua-dev \
         musl-dev \
         cyrus-sasl-dev \
-        curl-dev \
         mosquitto-dev \
         libev-dev \
     && mkdir -p /rocks \
