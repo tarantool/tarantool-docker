@@ -8,6 +8,8 @@ RUN addgroup -S tarantool \
 ENV TARANTOOL_VERSION=1.9.2-0-g113ade24e \
     TARANTOOL_DOWNLOAD_URL=https://github.com/tarantool/tarantool.git \
     TARANTOOL_INSTALL_LUADIR=/usr/local/share/tarantool \
+    CURL_REPO=https://github.com/curl/curl.git \
+    CURL_TAG=curl-7_59_0 \
     GPERFTOOLS_REPO=https://github.com/gperftools/gperftools.git \
     GPERFTOOLS_TAG=gperftools-2.5 \
     LUAROCKS_URL=https://github.com/tarantool/luarocks/archive/6e6fe62d9409fe2103c0fd091cccb3da0451faf5.tar.gz \
@@ -40,11 +42,9 @@ RUN set -x \
         ncurses \
         libgomp \
         lua \
-        curl \
         tar \
         zip \
         libunwind \
-        libcurl \
         icu \
     && apk add --no-cache --virtual .build-deps \
         perl \
@@ -67,9 +67,17 @@ RUN set -x \
         libtool \
         linux-headers \
         go \
-        curl-dev \
         icu-dev \
         wget \
+    && : "---------- curl ----------" \
+    && mkdir -p /usr/src/curl \
+    && git clone "$CURL_REPO" /usr/src/curl \
+    && git -C /usr/src/curl checkout "$CURL_TAG" \
+    && (cd /usr/src/curl \
+        && ./buildconf \
+        && ./configure --prefix "/usr/local" \
+        && make -j \
+        && make install) \
     && : "---------- gperftools ----------" \
     && mkdir -p /usr/src/gperftools \
     && git clone "$GPERFTOOLS_REPO" /usr/src/gperftools \
