@@ -287,3 +287,70 @@ You can report problems and request
 features [on our GitHub](https://github.com/tarantool/docker).
 
 Alternatively you may get help on our [Telegram channel](https://t.me/tarantool).
+
+# Contributing
+
+## How to contribute
+
+Open a pull request to the master branch. A maintaner is responsible for
+updating all relevant branches when merging the PR.
+
+## How to check
+
+Say, we have updated 1.x/Dockerfile and want to check it:
+
+```sh
+$ docker build 1.x/ -t t1.x
+$ docker run -it t1.x
+...perform a test...
+```
+
+## Build pipelines
+
+Fixed versions:
+
+| Branch | Dockerfile     | Docker tag |
+| ------ | ----------     | ---------- |
+| 1.7.3  | 1.7/Dockerfile | 1.7.3      |
+| 1.7.4  | 1.7/Dockerfile | 1.7.4      |
+| 1.7.5  | 1.7/Dockerfile | 1.7.5      |
+| 1.7.6  | 1.7/Dockerfile | 1.7.6      |
+| 1.8.1  | 1.8/Dockerfile | 1.8.1      |
+| 1.9.1  | 1.x/Dockerfile | 1.9.1      |
+| 1.9.2  | 1.x/Dockerfile | 1.9.2      |
+| 1.10.0 | 1.x/Dockerfile | 1.10.0     |
+| 1.10.2 | 1.x/Dockerfile | 1.10.2     |
+
+Rolling versions:
+
+| Branch | Dockerfile     | Docker tag |
+| ------ | ----------     | ---------- |
+| master | 1.5/Dockerfile | 1.5        |
+| master | 1.6/Dockerfile | 1.6        |
+| master | 1.7/Dockerfile | 1.7        |
+| master | 1.x/Dockerfile | 1          |
+| master | 1.x/Dockerfile | latest     |
+| master | 2.x/Dockerfile | 2          |
+
+Special builds:
+
+| Branch | Dockerfile             | Docker tag  |
+| ------ | ----------             | ----------  |
+| master | 1.x-centos7/Dockerfile | 1.x-centos7 |
+
+## How to push changes (for maintainers)
+
+When the change is about specific tarantool version or versions range, update
+all relevant fixed versions & rolling versions in all relevant branches
+according to the pipelines listed above.
+
+When the change is about the environment at all, all versions need to be
+updated in all relevent branches.
+
+Add a new release (say, `x.y.z`). Create / update rolling versions `x` and
+`x.y` in master, create fixed version `x.y.z` on the corresponding branch, add
+corresponding build pipeline on Docker Hub. ([Related][1].)
+
+A maintainer is responsible to check updated images.
+
+[1]: https://tarantool.io/en/doc/1.9/dev_guide/release_management/#how-to-make-a-minor-release
