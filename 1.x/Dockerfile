@@ -46,6 +46,7 @@ RUN set -x \
         zip \
         libunwind \
         icu \
+        ca-certificates \
     && apk add --no-cache --virtual .build-deps \
         perl \
         gcc \
