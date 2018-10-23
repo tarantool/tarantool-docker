@@ -8,6 +8,8 @@ RUN addgroup -S tarantool \
 ENV TARANTOOL_VERSION=1.7.3-32-g0dd09b1 \
     TARANTOOL_DOWNLOAD_URL=https://github.com/tarantool/tarantool.git \
     TARANTOOL_INSTALL_LUADIR=/usr/local/share/tarantool \
+    CURL_REPO=https://github.com/curl/curl.git \
+    CURL_TAG=curl-7_59_0 \
     LUAROCKS_URL=http://keplerproject.github.io/luarocks/releases/luarocks-2.3.0.tar.gz \
     LUAROCK_AVRO_SCHEMA_REPO=https://github.com/tarantool/avro-schema.git \
     LUAROCK_AVRO_SCHEMA_TAG=b49efa8 \
@@ -40,23 +42,23 @@ RUN set -x \
     && apk add --no-cache --virtual .run-deps \
         libstdc++ \
         readline \
-        openssl \
+        libressl \
         yaml \
         lz4 \
         binutils \
         ncurses \
         libgomp \
         lua \
-        curl \
         tar \
         zip \
+        ca-certificates \
     && apk add --no-cache --virtual .build-deps \
         perl \
         gcc \
         g++ \
         cmake \
         readline-dev \
-        openssl-dev \
+        libressl-dev \
         yaml-dev \
         lz4-dev \
         binutils-dev \
@@ -65,6 +67,19 @@ RUN set -x \
         musl-dev \
         make \
         git \
+        autoconf \
+        automake \
+        libtool \
+        wget \
+    && : "---------- curl ----------" \
+    && mkdir -p /usr/src/curl \
+    && git clone "$CURL_REPO" /usr/src/curl \
+    && git -C /usr/src/curl checkout "$CURL_TAG" \
+    && (cd /usr/src/curl \
+        && ./buildconf \
+        && ./configure --prefix "/usr/local" \
+        && make -j \
+        && make install) \
     && : "---------- tarantool ----------" \
     && mkdir -p /usr/src/tarantool \
     && git clone "$TARANTOOL_DOWNLOAD_URL" /usr/src/tarantool \
@@ -117,7 +132,6 @@ RUN set -x \
         mariadb-client-libs \
         libpq \
         cyrus-sasl \
-        libcurl \
         mosquitto-libs \
     && apk add --no-cache --virtual .build-deps \
         git \
@@ -130,7 +144,6 @@ RUN set -x \
         lua-dev \
         musl-dev \
         cyrus-sasl-dev \
-        curl-dev \
         mosquitto-dev \
     && mkdir -p /rocks \
     && : "---------- proj (for gis module) ----------" \
