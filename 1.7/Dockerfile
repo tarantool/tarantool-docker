@@ -8,6 +8,8 @@ RUN addgroup -S tarantool \
 ENV TARANTOOL_VERSION=1.7.4-0-g927bd9c24 \
     TARANTOOL_DOWNLOAD_URL=https://github.com/tarantool/tarantool.git \
     TARANTOOL_INSTALL_LUADIR=/usr/local/share/tarantool \
+    CURL_REPO=https://github.com/curl/curl.git \
+    CURL_TAG=curl-7_59_0 \
     GPERFTOOLS_REPO=https://github.com/gperftools/gperftools.git \
     GPERFTOOLS_TAG=gperftools-2.5 \
     LUAROCKS_URL=http://keplerproject.github.io/luarocks/releases/luarocks-2.3.0.tar.gz \
@@ -46,24 +48,24 @@ RUN set -x \
     && apk add --no-cache --virtual .run-deps \
         libstdc++ \
         readline \
-        openssl \
+        libressl \
         yaml \
         lz4 \
         binutils \
         ncurses \
         libgomp \
         lua \
-        curl \
         tar \
         zip \
         libunwind \
+        ca-certificates \
     && apk add --no-cache --virtual .build-deps \
         perl \
         gcc \
         g++ \
         cmake \
         readline-dev \
-        openssl-dev \
+        libressl-dev \
         yaml-dev \
         lz4-dev \
         binutils-dev \
@@ -78,6 +80,16 @@ RUN set -x \
         libtool \
         linux-headers \
         go \
+        wget \
+    && : "---------- curl ----------" \
+    && mkdir -p /usr/src/curl \
+    && git clone "$CURL_REPO" /usr/src/curl \
+    && git -C /usr/src/curl checkout "$CURL_TAG" \
+    && (cd /usr/src/curl \
+        && ./buildconf \
+        && ./configure --prefix "/usr/local" \
+        && make -j \
+        && make install) \
     && : "---------- gperftools ----------" \
     && mkdir -p /usr/src/gperftools \
     && git clone "$GPERFTOOLS_REPO" /usr/src/gperftools \
@@ -145,7 +157,6 @@ RUN set -x \
         mariadb-client-libs \
         libpq \
         cyrus-sasl \
-        libcurl \
         mosquitto-libs \
         libev \
     && apk add --no-cache --virtual .build-deps \
@@ -159,7 +170,6 @@ RUN set -x \
         lua-dev \
         musl-dev \
         cyrus-sasl-dev \
-        curl-dev \
         mosquitto-dev \
         libev-dev \
     && mkdir -p /rocks \
