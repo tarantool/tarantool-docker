@@ -102,7 +102,7 @@ $ docker run --name mytarantool -p3301:3301 -d tarantool/tarantool:1.7
 
 This will start an instance of Tarantool 1.7 and expose it on
 port 3301. Note, that by default there is no password protection, so
-don't expose this instance to the ouside world.
+don't expose this instance to the outside world.
 
 In this case, when there is no lua code provided, the entry point
 script initializes database using a sane set of defaults. Some of them
