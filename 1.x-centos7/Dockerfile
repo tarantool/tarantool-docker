@@ -66,10 +66,10 @@ RUN set -x \
         wget \
         curl-devel \
     && : "---------- libicu ----------" \
-    && wget http://download.icu-project.org/files/icu4c/62.1/icu4c-62_1-src.tgz \
+    && wget http://download.icu-project.org/files/icu4c/63.1/icu4c-63_1-src.tgz \
     && mkdir -p /usr/src/icu \
-        && tar -xzf icu4c-62_1-src.tgz -C /usr/src/icu --strip-components=1 \
-        && rm icu4c-62_1-src.tgz \
+        && tar -xzf icu4c-63_1-src.tgz -C /usr/src/icu --strip-components=1 \
+        && rm icu4c-63_1-src.tgz \
     && (cd /usr/src/icu/source; \
         chmod +x runConfigureICU configure install-sh; \
         ./runConfigureICU Linux/gcc; \
