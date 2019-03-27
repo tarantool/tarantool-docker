@@ -1,0 +1,110 @@
+diff --git a/src/base/linux_syscall_support.h b/src/base/linux_syscall_support.h
+index 5d578cd..fceebe2 100644
+--- a/src/base/linux_syscall_support.h
++++ b/src/base/linux_syscall_support.h
+@@ -2432,9 +2432,9 @@ struct kernel_stat {
+     #if defined(__s390x__)
+     LSS_INLINE _syscall1(void*, mmap, void*, a)
+     #else
+-    /* Need to make sure __off64_t isn't truncated to 32-bits under x32.  */
++    /* Need to make sure off64_t isn't truncated to 32-bits under x32.  */
+     LSS_INLINE void* LSS_NAME(mmap)(void *s, size_t l, int p, int f, int d,
+-                                    __off64_t o) {
++                                    off64_t o) {
+       LSS_BODY(6, void*, mmap, LSS_SYSCALL_ARG(s), LSS_SYSCALL_ARG(l),
+                                LSS_SYSCALL_ARG(p), LSS_SYSCALL_ARG(f),
+                                LSS_SYSCALL_ARG(d), (uint64_t)(o));
+@@ -2475,7 +2475,7 @@ struct kernel_stat {
+     LSS_INLINE _syscall6(void*, mmap,              void*, s,
+                          size_t,                   l, int,               p,
+                          int,                      f, int,               d,
+-                         __off64_t,                o)
++                         off64_t,                o)
+     LSS_INLINE int LSS_NAME(sigaction)(int signum,
+                                        const struct kernel_sigaction *act,
+                                        struct kernel_sigaction *oldact) {
+diff --git a/src/malloc_hook_mmap_linux.h b/src/malloc_hook_mmap_linux.h
+index 1c4c766..b2aa8ed 100755
+--- a/src/malloc_hook_mmap_linux.h
++++ b/src/malloc_hook_mmap_linux.h
+@@ -56,7 +56,7 @@
+
+ static inline void* do_mmap64(void *start, size_t length,
+                               int prot, int flags,
+-                              int fd, __off64_t offset) __THROW {
++                              int fd, off64_t offset) __THROW {
+   return sys_mmap(start, length, prot, flags, fd, offset);
+ }
+
+@@ -67,7 +67,7 @@ static inline void* do_mmap64(void *start, size_t length,
+
+ static inline void* do_mmap64(void *start, size_t length,
+                               int prot, int flags,
+-                              int fd, __off64_t offset) __THROW {
++                              int fd, off64_t offset) __THROW {
+   void *result;
+
+   // Try mmap2() unless it's not supported
+@@ -151,9 +151,11 @@ static inline void* do_mmap64(void *start, size_t length,
+ # undef mmap
+
+ extern "C" {
++  #ifndef mmap64
+   void* mmap64(void *start, size_t length, int prot, int flags,
+-               int fd, __off64_t offset  ) __THROW
++               int fd, off64_t offset  ) __THROW
+     ATTRIBUTE_SECTION(malloc_hook);
++  #endif
+   void* mmap(void *start, size_t length,int prot, int flags,
+              int fd, off_t offset) __THROW
+     ATTRIBUTE_SECTION(malloc_hook);
+@@ -166,8 +168,9 @@ extern "C" {
+     ATTRIBUTE_SECTION(malloc_hook);
+ }
+
++#ifndef mmap64
+ extern "C" void* mmap64(void *start, size_t length, int prot, int flags,
+-                        int fd, __off64_t offset) __THROW {
++                        int fd, off64_t offset) __THROW {
+   MallocHook::InvokePreMmapHook(start, length, prot, flags, fd, offset);
+   void *result;
+   if (!MallocHook::InvokeMmapReplacement(
+@@ -177,6 +180,7 @@ extern "C" void* mmap64(void *start, size_t length, int prot, int flags,
+   MallocHook::InvokeMmapHook(result, start, length, prot, flags, fd, offset);
+   return result;
+ }
++#endif
+
+ # if !defined(__USE_FILE_OFFSET64) || !defined(__REDIRECT_NTH)
+
+@@ -216,7 +220,7 @@ extern "C" void* mremap(void* old_addr, size_t old_size, size_t new_size,
+   return result;
+ }
+
+-#ifndef __UCLIBC__
++#if defined(__GLIBC__) && ! defined(__UCLIBC__)
+ // libc's version:
+ extern "C" void* __sbrk(ptrdiff_t increment);
+
+diff --git a/src/tests/stacktrace_unittest.cc b/src/tests/stacktrace_unittest.cc
+index 3c9f735..2d39ad9 100644
+--- a/src/tests/stacktrace_unittest.cc
++++ b/src/tests/stacktrace_unittest.cc
+@@ -120,17 +120,6 @@ void ATTRIBUTE_NOINLINE CheckStackTraceLeaf(void) {
+   CHECK_GE(size, 1);
+   CHECK_LE(size, STACK_LEN);
+
+-#ifdef HAVE_EXECINFO_H
+-  {
+-    char **strings = backtrace_symbols(stack, size);
+-    printf("Obtained %d stack frames.\n", size);
+-    for (int i = 0; i < size; i++)
+-      printf("%s %p\n", strings[i], stack[i]);
+-    printf("CheckStackTrace() addr: %p\n", &CheckStackTrace);
+-    free(strings);
+-  }
+-#endif
+-
+   for (int i = 0; i < BACKTRACE_STEPS; i++) {
+     printf("Backtrace %d: expected: %p..%p  actual: %p ... ",
+            i, expected_range[i].start, expected_range[i].end, stack[i]);
