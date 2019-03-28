@@ -151,7 +151,7 @@ services:
   tarantool1:
     image: tarantool/tarantool:1.10.2
     environment:
-      TARANTOOL_REPLICATION_SOURCE: "tarantool1,tarantool2"
+      TARANTOOL_REPLICATION: "tarantool1,tarantool2"
     networks:
       - mynet
     ports:
@@ -160,7 +160,7 @@ services:
   tarantool2:
     image: tarantool/tarantool:1.10.2
     environment:
-      TARANTOOL_REPLICATION_SOURCE: "tarantool1,tarantool2"
+      TARANTOOL_REPLICATION: "tarantool1,tarantool2"
     networks:
       - mynet
     ports:
