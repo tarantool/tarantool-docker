@@ -5,7 +5,7 @@ RUN addgroup -S tarantool \
     && adduser -S -G tarantool tarantool \
     && apk add --no-cache 'su-exec>=0.2'
 
-ENV TARANTOOL_VERSION=1.10.2-193-gb1612f0bf \
+ENV TARANTOOL_VERSION=1.10.3 \
     TARANTOOL_DOWNLOAD_URL=https://github.com/tarantool/tarantool.git \
     TARANTOOL_INSTALL_LUADIR=/usr/local/share/tarantool \
     CURL_REPO=https://github.com/curl/curl.git \
