@@ -1,0 +1,7 @@
+[home_oojah_mqtt]
+name=mqtt (CentOS_CentOS-7)
+type=rpm-md
+baseurl=http://download.opensuse.org/repositories/home:/oojah:/mqtt/CentOS_CentOS-7/
+gpgcheck=1
+gpgkey=http://download.opensuse.org/repositories/home:/oojah:/mqtt/CentOS_CentOS-7//repodata/repomd.xml.key
+enabled=1

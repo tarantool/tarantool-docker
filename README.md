@@ -344,6 +344,7 @@ Special builds:
 | Branch | Dockerfile             | Docker tag  |
 | ------ | ----------             | ----------  |
 | master | 1.x-centos7/Dockerfile | 1.x-centos7 |
+| master | 2.x-centos7/Dockerfile | 2.x-centos7 |
 
 ## How to push changes (for maintainers)
 
