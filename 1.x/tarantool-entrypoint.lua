@@ -143,7 +143,7 @@ WARNING: A password for guest user has been specified.
 
     if user_name ~= 'admin' then
         log.info("Granting admin privileges to user '%s'", user_name)
-        box.schema.user.grant(user_name, 'read,write,execute',
+        box.schema.user.grant(user_name, 'read,write,execute,create,drop',
                               'universe', nil, {if_not_exists = true})
         box.schema.user.grant(user_name, 'replication',
                               nil, nil, {if_not_exists = true})
