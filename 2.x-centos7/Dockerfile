@@ -4,13 +4,13 @@ MAINTAINER mail@racktear.com
 RUN groupadd tarantool \
     && adduser -g tarantool tarantool
 
-ENV TARANTOOL_VERSION=2.1.2-52-g154345fc5 \
+ENV TARANTOOL_VERSION=2.1.2-64-g69270b326 \
     TARANTOOL_DOWNLOAD_URL=https://github.com/tarantool/tarantool.git \
     TARANTOOL_INSTALL_LUADIR=/usr/local/share/tarantool \
     CURL_REPO=https://github.com/curl/curl.git \
     CURL_TAG=curl-7_64_0 \
     LUAROCKS_URL=https://github.com/tarantool/luarocks/archive/6e6fe62d9409fe2103c0fd091cccb3da0451faf5.tar.gz \
-    LUAROCK_VSHARD_VERSION=0.1.8 \
+    LUAROCK_VSHARD_VERSION=0.1.9 \
     LUAROCK_CHECKS_VERSION=3.0.0 \
     LUAROCK_AVRO_SCHEMA_VERSION=3.0.3 \
     LUAROCK_EXPERATIOND_VERSION=1.0.1 \
