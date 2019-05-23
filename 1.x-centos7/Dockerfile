@@ -4,7 +4,7 @@ MAINTAINER mail@racktear.com
 RUN groupadd tarantool \
     && adduser -g tarantool tarantool
 
-ENV TARANTOOL_VERSION=1.10.3-37-gbb53975aa \
+ENV TARANTOOL_VERSION=1.10.3-52-g02b5948bd \
     TARANTOOL_DOWNLOAD_URL=https://github.com/tarantool/tarantool.git \
     TARANTOOL_INSTALL_LUADIR=/usr/local/share/tarantool \
     CURL_REPO=https://github.com/curl/curl.git \
