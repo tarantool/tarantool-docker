@@ -4,19 +4,19 @@ MAINTAINER mail@racktear.com
 RUN groupadd tarantool \
     && adduser -g tarantool tarantool
 
-ENV TARANTOOL_VERSION=2.1.2-81-gb635c262a \
+ENV TARANTOOL_VERSION=2.1.2-108-g0bed174d0 \
     TARANTOOL_DOWNLOAD_URL=https://github.com/tarantool/tarantool.git \
     TARANTOOL_INSTALL_LUADIR=/usr/local/share/tarantool \
     CURL_REPO=https://github.com/curl/curl.git \
-    CURL_TAG=curl-7_64_0 \
+    CURL_TAG=curl-7_65_1 \
     LUAROCKS_URL=https://github.com/tarantool/luarocks/archive/6e6fe62d9409fe2103c0fd091cccb3da0451faf5.tar.gz \
     LUAROCK_VSHARD_VERSION=0.1.9 \
-    LUAROCK_CHECKS_VERSION=3.0.0 \
+    LUAROCK_CHECKS_VERSION=3.0.1 \
     LUAROCK_AVRO_SCHEMA_VERSION=3.0.3 \
     LUAROCK_EXPERATIOND_VERSION=1.0.1 \
     LUAROCK_QUEUE_VERSION=1.0.3 \
     LUAROCK_CONNPOOL_VERSION=1.1.1 \
-    LUAROCK_HTTP_VERSION=1.0.5 \
+    LUAROCK_HTTP_VERSION=1.1.0 \
     LUAROCK_MEMCACHED_VERSION=1.0.0 \
     LUAROCK_TARANTOOL_PG_VERSION=2.0.2 \
     LUAROCK_TARANTOOL_MYSQL_VERSION=2.0.1 \
@@ -64,10 +64,10 @@ RUN set -x \
         go \
         wget \
     && : "---------- libicu ----------" \
-    && wget http://download.icu-project.org/files/icu4c/63.1/icu4c-63_1-src.tgz \
+    && wget http://download.icu-project.org/files/icu4c/64.2/icu4c-64_2-src.tgz \
     && mkdir -p /usr/src/icu \
-        && tar -xzf icu4c-63_1-src.tgz -C /usr/src/icu --strip-components=1 \
-        && rm icu4c-63_1-src.tgz \
+        && tar -xzf icu4c-64_2-src.tgz -C /usr/src/icu --strip-components=1 \
+        && rm icu4c-64_2-src.tgz \
     && (cd /usr/src/icu/source; \
         chmod +x runConfigureICU configure install-sh; \
         ./runConfigureICU Linux/gcc; \
