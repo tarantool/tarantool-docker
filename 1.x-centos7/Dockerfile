@@ -192,6 +192,7 @@ RUN set -x \
     && mkdir -p /rocks \
     && : "---------- luarocks ----------" \
     && luarocks install lua-term \
+    && luarocks install https://raw.githubusercontent.com/tarantool/ldecnumber/master/ldecnumber-scm-1.rockspec \
     && luarocks install ldoc \
     && : "checks" \
     && luarocks install checks $LUAROCK_CHECKS_VERSION \

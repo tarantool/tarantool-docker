@@ -70,6 +70,7 @@ is only one Tarantool instance running in the container.
 - [mqtt](https://github.com/tarantool/mqtt): Client for MQTT message brokers
 - [gis](https://github.com/tarantool/gis): store and query geospatial data
 - [gperftools](https://github.com/tarantool/gperftools): collect CPU profile to find bottlenecks in your code
+- [ldecnumber](https://github.com/tarantool/ldecnumber): decimal arithmetic package
 
 If the module you need is not listed here, there is a good chance we may add it. Open an issue [on our GitHub](https://github.com/tarantool/docker).
 
