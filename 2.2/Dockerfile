@@ -5,7 +5,7 @@ RUN addgroup -S tarantool \
     && adduser -S -G tarantool tarantool \
     && apk add --no-cache 'su-exec>=0.2'
 
-ENV TARANTOOL_VERSION=1.7.6-27-g7ef5be2ee \
+ENV TARANTOOL_VERSION=2.2.1-3-g878e2a42c \
     TARANTOOL_DOWNLOAD_URL=https://github.com/tarantool/tarantool.git \
     TARANTOOL_INSTALL_LUADIR=/usr/local/share/tarantool \
     CURL_REPO=https://github.com/curl/curl.git \
@@ -68,6 +68,7 @@ RUN set -x \
         libtool \
         linux-headers \
         go \
+        tcl \
         icu-dev \
         wget \
     && : "---------- curl ----------" \
@@ -161,6 +162,7 @@ RUN set -x \
         cyrus-sasl-dev \
         mosquitto-dev \
         libev-dev \
+        libressl-dev \
     && mkdir -p /rocks \
     && : "---------- proj (for gis module) ----------" \
     && wget -O proj.tar.gz http://download.osgeo.org/proj/proj-4.9.3.tar.gz \
