@@ -5,11 +5,9 @@ RUN addgroup -S tarantool \
     && adduser -S -G tarantool tarantool \
     && apk add --no-cache 'su-exec>=0.2'
 
-ENV TARANTOOL_VERSION=2.3.0-1-g35ef33200 \
+ENV TARANTOOL_VERSION=2.3.0-90-g51d8e4c35 \
     TARANTOOL_DOWNLOAD_URL=https://github.com/tarantool/tarantool.git \
     TARANTOOL_INSTALL_LUADIR=/usr/local/share/tarantool \
-    CURL_REPO=https://github.com/curl/curl.git \
-    CURL_TAG=curl-7_59_0 \
     GPERFTOOLS_REPO=https://github.com/gperftools/gperftools.git \
     GPERFTOOLS_TAG=gperftools-2.5 \
     LUAROCKS_URL=https://github.com/tarantool/luarocks/archive/6e6fe62d9409fe2103c0fd091cccb3da0451faf5.tar.gz \
@@ -38,6 +36,7 @@ RUN set -x \
         libressl \
         yaml \
         lz4 \
+        zlib \
         binutils \
         ncurses \
         libgomp \
@@ -51,11 +50,13 @@ RUN set -x \
         perl \
         gcc \
         g++ \
+        file \
         cmake \
         readline-dev \
         libressl-dev \
         yaml-dev \
         lz4-dev \
+        zlib-dev \
         binutils-dev \
         ncurses-dev \
         lua-dev \
@@ -71,15 +72,6 @@ RUN set -x \
         tcl \
         icu-dev \
         wget \
-    && : "---------- curl ----------" \
-    && mkdir -p /usr/src/curl \
-    && git clone "$CURL_REPO" /usr/src/curl \
-    && git -C /usr/src/curl checkout "$CURL_TAG" \
-    && (cd /usr/src/curl \
-        && ./buildconf \
-        && ./configure --prefix "/usr/local" \
-        && make -j \
-        && make install) \
     && : "---------- gperftools ----------" \
     && mkdir -p /usr/src/gperftools \
     && git clone "$GPERFTOOLS_REPO" /usr/src/gperftools \
@@ -163,6 +155,7 @@ RUN set -x \
         mosquitto-dev \
         libev-dev \
         libressl-dev \
+        wget \
     && mkdir -p /rocks \
     && : "---------- proj (for gis module) ----------" \
     && wget -O proj.tar.gz http://download.osgeo.org/proj/proj-4.9.3.tar.gz \

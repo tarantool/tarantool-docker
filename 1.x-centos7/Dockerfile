@@ -4,11 +4,9 @@ MAINTAINER mail@racktear.com
 RUN groupadd tarantool \
     && adduser -g tarantool tarantool
 
-ENV TARANTOOL_VERSION=1.10.3-107-g17db27170 \
+ENV TARANTOOL_VERSION=1.10.3-136-gc3c087d5c \
     TARANTOOL_DOWNLOAD_URL=https://github.com/tarantool/tarantool.git \
     TARANTOOL_INSTALL_LUADIR=/usr/local/share/tarantool \
-    CURL_REPO=https://github.com/curl/curl.git \
-    CURL_TAG=curl-7_65_1 \
     LUAROCKS_URL=https://github.com/tarantool/luarocks/archive/6e6fe62d9409fe2103c0fd091cccb3da0451faf5.tar.gz \
     LUAROCK_SHARD_REPO=https://github.com/tarantool/shard.git \
     LUAROCK_SHARD_TAG=8f8c5a7 \
@@ -43,16 +41,19 @@ RUN set -x \
         lua \
         tar \
         zip \
+        zlib \
         unzip \
         libunwind \
         ca-certificates \
     && yum -y install \
         perl \
+        file \
         gcc-c++ \
         cmake \
         readline-devel \
         openssl-devel \
         libyaml-devel \
+        zlib-devel \
         lz4-devel \
         binutils-devel \
         ncurses-devel \
@@ -76,16 +77,6 @@ RUN set -x \
         make; \
         make install; \
         echo '/usr/local/lib' > /etc/ld.so.conf.d/local.conf; \
-        ldconfig ) \
-    && : "---------- curl ----------" \
-    && mkdir -p /usr/src/curl \
-    && git clone "$CURL_REPO" /usr/src/curl \
-    && (cd /usr/src/curl; \
-        git checkout "$CURL_TAG"; \
-        ./buildconf; \
-        ./configure --with-ssl --prefix "/usr/local"; \
-        make -j; \
-        make install; \
         ldconfig ) \
     && : "---------- gperftools ----------" \
     && yum install -y gperftools-libs \
@@ -144,6 +135,7 @@ RUN set -x \
         readline-devel \
         openssl-devel \
         libyaml-devel \
+        zlib-devel \
         lz4-devel \
         binutils-devel \
         ncurses-devel \
@@ -157,6 +149,7 @@ RUN set -x \
         go \
         wget \
         perl \
+        file \
         kernel-headers \
         golang-src \
     && rpm -qa | grep devel | xargs yum -y remove \
