@@ -7,7 +7,7 @@ RUN groupadd tarantool \
 ENV TARANTOOL_VERSION=2.3.0-90-g51d8e4c35 \
     TARANTOOL_DOWNLOAD_URL=https://github.com/tarantool/tarantool.git \
     TARANTOOL_INSTALL_LUADIR=/usr/local/share/tarantool \
-    LUAROCKS_URL=https://github.com/tarantool/luarocks/archive/6e6fe62d9409fe2103c0fd091cccb3da0451faf5.tar.gz \
+    LUAROCKS_URL=https://github.com/tarantool/luarocks/archive/f5bd5dfdde954861476c2304f7eafb59b1888b0c.tar.gz \
     LUAROCK_VSHARD_VERSION=0.1.9 \
     LUAROCK_CHECKS_VERSION=3.0.1 \
     LUAROCK_AVRO_SCHEMA_VERSION=3.0.3 \

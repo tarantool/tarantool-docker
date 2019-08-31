@@ -10,7 +10,7 @@ ENV TARANTOOL_VERSION=2.3.0-90-g51d8e4c35 \
     TARANTOOL_INSTALL_LUADIR=/usr/local/share/tarantool \
     GPERFTOOLS_REPO=https://github.com/gperftools/gperftools.git \
     GPERFTOOLS_TAG=gperftools-2.5 \
-    LUAROCKS_URL=https://github.com/tarantool/luarocks/archive/6e6fe62d9409fe2103c0fd091cccb3da0451faf5.tar.gz \
+    LUAROCKS_URL=https://github.com/tarantool/luarocks/archive/f5bd5dfdde954861476c2304f7eafb59b1888b0c.tar.gz \
     LUAROCK_SHARD_REPO=https://github.com/tarantool/shard.git \
     LUAROCK_SHARD_TAG=8f8c5a7 \
     LUAROCK_AVRO_SCHEMA_VERSION=2.0.1 \
@@ -155,7 +155,9 @@ RUN set -x \
         mosquitto-dev \
         libev-dev \
         libressl-dev \
+        curl-dev \
         wget \
+        unzip \
     && mkdir -p /rocks \
     && : "---------- proj (for gis module) ----------" \
     && wget -O proj.tar.gz http://download.osgeo.org/proj/proj-4.9.3.tar.gz \
