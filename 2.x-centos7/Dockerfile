@@ -4,7 +4,7 @@ MAINTAINER mail@racktear.com
 RUN groupadd tarantool \
     && adduser -g tarantool tarantool
 
-ENV TARANTOOL_VERSION=2.3.0-90-g51d8e4c35 \
+ENV TARANTOOL_VERSION=2.3.0-117-g4c2d1eff2 \
     TARANTOOL_DOWNLOAD_URL=https://github.com/tarantool/tarantool.git \
     TARANTOOL_INSTALL_LUADIR=/usr/local/share/tarantool \
     LUAROCKS_URL=https://github.com/tarantool/luarocks/archive/f5bd5dfdde954861476c2304f7eafb59b1888b0c.tar.gz \
