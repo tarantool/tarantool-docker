@@ -21,7 +21,6 @@ ENV TARANTOOL_VERSION=2.3.0-117-g4c2d1eff2 \
     LUAROCK_MEMCACHED_VERSION=1.0.0 \
     LUAROCK_TARANTOOL_PG_VERSION=2.0.1 \
     LUAROCK_TARANTOOL_MYSQL_VERSION=2.0.1 \
-    LUAROCK_TARANTOOL_CURL_VERSION=2.3.1 \
     LUAROCK_TARANTOOL_MQTT_VERSION=1.2.1 \
     LUAROCK_TARANTOOL_GIS_VERSION=1.0.0 \
     LUAROCK_TARANTOOL_PROMETHEUS_VERSION=1.0.0 \
@@ -204,8 +203,6 @@ RUN set -x \
     && luarocks install memcached $LUAROCK_MEMCACHED_VERSION \
     && : "prometheus" \
     && luarocks install prometheus $LUAROCK_TARANTOOL_PROMETHEUS_VERSION \
-    && : "curl" \
-    && luarocks install tarantool-curl $LUAROCK_TARANTOOL_CURL_VERSION \
     && : "mqtt" \
     && luarocks install mqtt $LUAROCK_TARANTOOL_MQTT_VERSION \
     && : "gis" \
