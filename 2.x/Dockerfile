@@ -5,7 +5,7 @@ RUN addgroup -S tarantool \
     && adduser -S -G tarantool tarantool \
     && apk add --no-cache 'su-exec>=0.2'
 
-ENV TARANTOOL_VERSION=2.3.0-117-g4c2d1eff2 \
+ENV TARANTOOL_VERSION=2.3.0-115-g5ba5ed37e \
     TARANTOOL_DOWNLOAD_URL=https://github.com/tarantool/tarantool.git \
     TARANTOOL_INSTALL_LUADIR=/usr/local/share/tarantool \
     GPERFTOOLS_REPO=https://github.com/gperftools/gperftools.git \
@@ -35,13 +35,13 @@ RUN set -x \
         libressl \
         yaml \
         lz4 \
-        zlib \
         binutils \
         ncurses \
         libgomp \
         lua \
         tar \
         zip \
+        zlib \
         libunwind \
         icu \
         ca-certificates \
@@ -49,8 +49,8 @@ RUN set -x \
         perl \
         gcc \
         g++ \
-        file \
         cmake \
+        file \
         readline-dev \
         libressl-dev \
         yaml-dev \
@@ -68,7 +68,6 @@ RUN set -x \
         libtool \
         linux-headers \
         go \
-        tcl \
         icu-dev \
         wget \
     && : "---------- gperftools ----------" \
@@ -153,8 +152,6 @@ RUN set -x \
         cyrus-sasl-dev \
         mosquitto-dev \
         libev-dev \
-        libressl-dev \
-        curl-dev \
         wget \
         unzip \
     && mkdir -p /rocks \
