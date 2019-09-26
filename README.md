@@ -322,6 +322,7 @@ Fixed versions:
 | 1.10.0 | 1.x/Dockerfile | 1.10.0     |
 | 1.10.2 | 1.x/Dockerfile | 1.10.2     |
 | 1.10.3 | 1.x/Dockerfile | 1.10.3     |
+| 1.10.4 | 1.x/Dockerfile | 1.10.4     |
 | 2.1.1  | 2.x/Dockerfile | 2.1.1      |
 | 2.1.2  | 2.x/Dockerfile | 2.1.2      |
 | 2.2.0  | 2.x/Dockerfile | 2.2.0      |
