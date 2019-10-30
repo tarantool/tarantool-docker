@@ -191,6 +191,7 @@ RUN set -x \
     && rm -rf /usr/src/geos \
     && : "---------- luarocks ----------" \
     && luarocks install lua-term \
+    && luarocks install https://raw.githubusercontent.com/tarantool/ldecnumber/master/ldecnumber-scm-1.rockspec \
     && luarocks install ldoc \
     && : "avro" \
     && git clone $LUAROCK_AVRO_SCHEMA_REPO /rocks/avro \
