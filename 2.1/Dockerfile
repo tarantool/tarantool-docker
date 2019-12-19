@@ -8,11 +8,9 @@ RUN addgroup -S tarantool \
 ENV TARANTOOL_VERSION=2.1.3-6-g91e2a9638 \
     TARANTOOL_DOWNLOAD_URL=https://github.com/tarantool/tarantool.git \
     TARANTOOL_INSTALL_LUADIR=/usr/local/share/tarantool \
-    CURL_REPO=https://github.com/curl/curl.git \
-    CURL_TAG=curl-7_59_0 \
     GPERFTOOLS_REPO=https://github.com/gperftools/gperftools.git \
     GPERFTOOLS_TAG=gperftools-2.5 \
-    LUAROCKS_URL=https://github.com/tarantool/luarocks/archive/6e6fe62d9409fe2103c0fd091cccb3da0451faf5.tar.gz \
+    LUAROCKS_URL=https://github.com/tarantool/luarocks/archive/f5bd5dfdde954861476c2304f7eafb59b1888b0c.tar.gz \
     LUAROCK_SHARD_REPO=https://github.com/tarantool/shard.git \
     LUAROCK_SHARD_TAG=8f8c5a7 \
     LUAROCK_AVRO_SCHEMA_VERSION=2.0.1 \
@@ -43,6 +41,7 @@ RUN set -x \
         lua \
         tar \
         zip \
+        zlib \
         libunwind \
         icu \
         ca-certificates \
@@ -51,10 +50,12 @@ RUN set -x \
         gcc \
         g++ \
         cmake \
+        file \
         readline-dev \
         libressl-dev \
         yaml-dev \
         lz4-dev \
+        zlib-dev \
         binutils-dev \
         ncurses-dev \
         lua-dev \
@@ -67,18 +68,8 @@ RUN set -x \
         libtool \
         linux-headers \
         go \
-        tcl \
         icu-dev \
         wget \
-    && : "---------- curl ----------" \
-    && mkdir -p /usr/src/curl \
-    && git clone "$CURL_REPO" /usr/src/curl \
-    && git -C /usr/src/curl checkout "$CURL_TAG" \
-    && (cd /usr/src/curl \
-        && ./buildconf \
-        && ./configure --prefix "/usr/local" \
-        && make -j \
-        && make install) \
     && : "---------- gperftools ----------" \
     && mkdir -p /usr/src/gperftools \
     && git clone "$GPERFTOOLS_REPO" /usr/src/gperftools \
@@ -161,7 +152,8 @@ RUN set -x \
         cyrus-sasl-dev \
         mosquitto-dev \
         libev-dev \
-        libressl-dev \
+        wget \
+        unzip \
     && mkdir -p /rocks \
     && : "---------- proj (for gis module) ----------" \
     && wget -O proj.tar.gz http://download.osgeo.org/proj/proj-4.9.3.tar.gz \
