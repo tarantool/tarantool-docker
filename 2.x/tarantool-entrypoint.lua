@@ -2,7 +2,6 @@
 
 local fio = require('fio')
 local errno = require('errno')
-local fun = require('fun')
 local urilib = require('uri')
 local console = require('console')
 local term = require('term')
