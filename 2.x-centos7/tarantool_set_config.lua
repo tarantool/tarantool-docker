@@ -3,7 +3,6 @@
 local CONSOLE_SOCKET_PATH = 'unix/:/var/run/tarantool/tarantool.sock'
 local CFG_FILE_PATH = '/etc/tarantool/config.yml'
 
-local fio = require('fio')
 local yaml = require('yaml')
 local console = require('console')
 local errno = require('errno')
