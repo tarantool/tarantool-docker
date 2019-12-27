@@ -293,16 +293,17 @@ Alternatively you may get help on our [Telegram channel](https://t.me/tarantool)
 
 ## How to contribute
 
-Open a pull request to the master branch. A maintaner is responsible for
-updating all relevant branches when merging the PR.
+Open a pull request to the master branch.
+A maintaner is responsible for merging the PR.
 
 ## How to check
 
-Say, we have updated 1.x/Dockerfile and want to check it:
+Say, we have updated dockerfiles/alpine_3.5_2.x and want to check it:
 
 ```sh
-$ docker build 1.x/ -t t1.x
-$ docker run -it t1.x
+$ IMAGE=tarantool/tarantool TAG=2 OS=alpine_3.5 VER=2.x DVER=2.x \
+        PORT=5200 make -f .gitlab.mk build
+$ docker run -it tarantool/tarantool:2
 ...perform a test...
 ```
 
@@ -329,37 +330,30 @@ Fixed versions:
 
 Rolling versions:
 
-| Branch | Dockerfile     | Docker tag |
-| ------ | ----------     | ---------- |
-| master | 1.5/Dockerfile | 1.5        |
-| master | 1.6/Dockerfile | 1.6        |
-| master | 1.7/Dockerfile | 1.7        |
-| master | 1.9/Dockerfile | 1.9        |
-| master | 1.x/Dockerfile | 1          |
-| master | 1.x/Dockerfile | latest     |
-| master | 2.1/Dockerfile | 2.1        |
-| master | 2.2/Dockerfile | 2.2        |
-| master | 2.x/Dockerfile | 2          |
+| Branch | Dockerfile                | Docker tags |
+| ------ | ----------                | ----------- |
+| master | dockerfile/alpine_3.5_1.x | 1           |
+| master | dockerfile/alpine_3.5_2.2 | 2.1/2.2     |
+| master | dockerfile/alpine_3.5_2.x | 2           |
 
 Special builds:
 
-| Branch | Dockerfile             | Docker tag  |
-| ------ | ----------             | ----------  |
-| master | 1.x-centos7/Dockerfile | 1.x-centos7 |
-| master | 2.x-centos7/Dockerfile | 2.x-centos7 |
+| Branch | Dockerfile              | Docker tag  |
+| ------ | ----------              | ----------  |
+| master | dockerfile/centos_7_1.x | 1.x-centos7 |
+| master | dockerfile/centos_7_2.x | 2.x-centos7 |
 
 ## How to push changes (for maintainers)
 
-When the change is about specific tarantool version or versions range, update
-all relevant fixed versions & rolling versions in all relevant branches
+When the change is about specific tarantool version or versions
+range, update all relevant fixed versions & rolling versions
 according to the pipelines listed above.
 
-When the change is about the environment at all, all versions need to be
-updated in all relevent branches.
+When the change is about the environment at all, all versions
+need to be updated.
 
-Add a new release (say, `x.y.z`). Create / update rolling versions `x` and
-`x.y` in master, create fixed version `x.y.z` on the corresponding branch, add
-corresponding build pipeline on Docker Hub. ([Related][1].)
+Add a new release (say, x.y.z). Create / update rolling
+versions x and x.y in master, create fixed version x.y.z.
 
 A maintainer is responsible to check updated images.
 

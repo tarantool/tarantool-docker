@@ -4,6 +4,7 @@ stages:
 variables:
   REGISTRY: registry.gitlab.com
   IMAGE: ${REGISTRY}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}
+  CHECK_GIT: git diff origin/master --name-only
 
 before_script:
   # Enable GitLab registry
@@ -13,35 +14,64 @@ before_script:
   stage: build
   script:
     - >
-      if git diff origin/master --name-only | grep "^${DIR}/" ; then
+      if  ${CHECK_GIT} | grep "^versions/${OS}_${VER}$" || \
+          ${CHECK_GIT} | grep "^dockerfiles/${OS}_${DVER}$" || \
+          ${CHECK_GIT} | grep "^files/"
+      then
         make -f .gitlab.mk build
       fi;
 
-'1.x':
+'alpine 3.5 1.x':
   <<: *build_definition
   variables:
+    OS: 'alpine_3.5'
     TAG: '1'
-    DIR: '1.x'
-    PORT: 3301
+    VER: '1.x'
+    DVER: '1.x'
+    PORT: 3110
 
-'2.x':
+'alpine 3.5 2.x':
   <<: *build_definition
   variables:
+    OS: 'alpine_3.5'
     TAG: '2'
-    DIR: '2.x'
-    PORT: 3302
+    VER: '2.x'
+    DVER: '2.x'
+    PORT: 3120
 
-'2.1':
+'alpine 3.5 2.1':
   <<: *build_definition
   variables:
+    OS: 'alpine_3.5'
     TAG: '2.1'
-    DIR: '2.1'
-    PORT: 3321
+    VER: '2.1'
+    DVER: '2.2'
+    PORT: 3121
 
-'2.2':
+'alpine 3.5 2.2':
   <<: *build_definition
   variables:
+    OS: 'alpine_3.5'
     TAG: '2.2'
-    DIR: '2.2'
-    PORT: 3322
+    VER: '2.2'
+    DVER: '2.2'
+    PORT: 3122
+
+'centos 7 1.x':
+  <<: *build_definition
+  variables:
+    OS: 'centos_7'
+    TAG: '1.x-centos7'
+    VER: '1.x'
+    DVER: '1.x'
+    PORT: 3210
+
+'centos 7 2.x':
+  <<: *build_definition
+  variables:
+    OS: 'centos_7'
+    TAG: '2.x-centos7'
+    VER: '2.x'
+    DVER: '2.x'
+    PORT: 3220
 
