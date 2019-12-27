@@ -1,35 +1,47 @@
 stages:
- - build
- - release
+  - build
 
 variables:
   REGISTRY: registry.gitlab.com
   IMAGE: ${REGISTRY}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}
 
 before_script:
- # Enable GitLab registry
- - docker login -u gitlab-ci-token -p ${CI_BUILD_TOKEN} ${REGISTRY}
+  # Enable GitLab registry
+  - docker login -u gitlab-ci-token -p ${CI_BUILD_TOKEN} ${REGISTRY}
 
-#
-# Build Docker image and publish as IMAGE:BRANCH
-#
-docker-build:
+.build_template: &build_definition
   stage: build
-  variables:
-    TAG: 1.7-centos7
   script:
-   - docker build -t ${IMAGE}:${TAG}-${CI_COMMIT_REF_SLUG} ${TAG}/
-   - docker push ${IMAGE}:${TAG}-${CI_COMMIT_REF_SLUG}
+    - >
+      if git diff origin/master --name-only | grep "^${DIR}/" ; then
+        make -f .gitlab.mk build
+      fi;
 
-#
-# Tag IMAGE:BRANCH as image:latest for release branches (master)
-#
-docker-tag:
-  stage: release
+'1.x':
+  <<: *build_definition
   variables:
-    TAG: 1.7-centos7
-  script:
-   - docker tag ${IMAGE}:${TAG}-${CI_COMMIT_REF_SLUG} ${IMAGE}:${TAG}
-   - docker push ${IMAGE}:${TAG}
-  only:
-   - master
+    TAG: '1'
+    DIR: '1.x'
+    PORT: 3301
+
+'2.x':
+  <<: *build_definition
+  variables:
+    TAG: '2'
+    DIR: '2.x'
+    PORT: 3302
+
+'2.1':
+  <<: *build_definition
+  variables:
+    TAG: '2.1'
+    DIR: '2.1'
+    PORT: 3321
+
+'2.2':
+  <<: *build_definition
+  variables:
+    TAG: '2.2'
+    DIR: '2.2'
+    PORT: 3322
+
