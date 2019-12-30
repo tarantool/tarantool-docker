@@ -198,7 +198,7 @@ RUN set -x \
 
 RUN set -x \
     && : "---------- gosu ----------" \
-    && gpg --keyserver pool.sks-keyservers.net --recv-keys \
+    && gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys \
        B42F6819007F00F88E364FD4036A9C25BF357DD4 \
     && curl -o /usr/local/bin/gosu -SL \
        "https://github.com/tianon/gosu/releases/download/1.2/gosu-amd64" \
