@@ -326,6 +326,7 @@ Fixed versions:
 | 2.1.2  | 2.x/Dockerfile | 2.1.2      |
 | 2.2.0  | 2.x/Dockerfile | 2.2.0      |
 | 2.2.1  | 2.x/Dockerfile | 2.2.1      |
+| 2.3.1  | 2.x/Dockerfile | 2.3.1      |
 
 Rolling versions:
 
@@ -339,6 +340,7 @@ Rolling versions:
 | master | 1.x/Dockerfile | latest     |
 | master | 2.1/Dockerfile | 2.1        |
 | master | 2.2/Dockerfile | 2.2        |
+| master | 2.3/Dockerfile | 2.3        |
 | master | 2.x/Dockerfile | 2          |
 
 Special builds:
