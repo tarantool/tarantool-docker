@@ -1,0 +1,30 @@
+name: CI
+
+on: [push]
+
+env:
+  REGISTRY: registry.gitlab.com
+  IMAGE: ${REGISTRY}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        tnt: [2.3]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: build
+      env:
+        TAG: '2.3'
+        DIR: '2.3'
+        PORT: 3323
+      run:
+        - >
+          docker build --network=host -t ${IMAGE}:${TAG} ${DIR}/ ; \
+          docker run --rm --name tarantool_${TAG} -p ${PORT}:${PORT} -d ${IMAGE}:${TAG} ; \
+          docker exec -t tarantool_${TAG} tarantool_is_up ; \
+          docker stop tarantool_${TAG} ; \
+          echo docker push ${IMAGE}:${TAG} ;
