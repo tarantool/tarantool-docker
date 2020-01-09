@@ -5,7 +5,7 @@ RUN addgroup -S tarantool \
     && adduser -S -G tarantool tarantool \
     && apk add --no-cache 'su-exec>=0.2'
 
-ENV TARANTOOL_VERSION=2.3.0-275-g06aeb7687 \
+ENV TARANTOOL_VERSION=2.3.1-1-g4137134c0 \
     TARANTOOL_DOWNLOAD_URL=https://github.com/tarantool/tarantool.git \
     GPERFTOOLS_REPO=https://github.com/gperftools/gperftools.git \
     GPERFTOOLS_TAG=gperftools-2.5 \
