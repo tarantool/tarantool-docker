@@ -21,6 +21,48 @@ before_script:
         make -f .gitlab.mk build
       fi;
 
+# ##########
+# ALPINE 3.5
+# ##########
+
+# Tarantool branch 1.10
+
+'alpine 3.5 1.10.0':
+  <<: *build_definition
+  variables:
+    OS: 'alpine_3.5'
+    TAG: '1.10.0'
+    VER: '1.10.0'
+    DVER: '1.10.3'
+    PORT: 5101
+
+'alpine 3.5 1.10.2':
+  <<: *build_definition
+  variables:
+    OS: 'alpine_3.5'
+    TAG: '1.10.2'
+    VER: '1.10.2'
+    DVER: '1.10.3'
+    PORT: 5102
+
+'alpine 3.5 1.10.3':
+  <<: *build_definition
+  variables:
+    OS: 'alpine_3.5'
+    TAG: '1.10.3'
+    VER: '1.10.3'
+    DVER: '1.10.3'
+    PORT: 5103
+
+'alpine 3.5 1.10.4':
+  <<: *build_definition
+  variables:
+    OS: 'alpine_3.5'
+    TAG: '1.10.4'
+    VER: '1.10.4'
+    DVER: '1.x'
+    PORT: 5104
+
 'alpine 3.5 1.x':
   <<: *build_definition
   variables:
@@ -28,16 +70,36 @@ before_script:
     TAG: '1'
     VER: '1.x'
     DVER: '1.x'
-    PORT: 3110
+    PORT: 5100
 
-'alpine 3.5 2.x':
+# Tarantool branch 2.1
+
+'alpine 3.5 2.1.1':
   <<: *build_definition
   variables:
     OS: 'alpine_3.5'
-    TAG: '2'
-    VER: '2.x'
-    DVER: '2.x'
-    PORT: 3120
+    TAG: '2.1.1'
+    VER: '2.1.1'
+    DVER: '2.2'
+    PORT: 5211
+
+'alpine 3.5 2.1.2':
+  <<: *build_definition
+  variables:
+    OS: 'alpine_3.5'
+    TAG: '2.1.2'
+    VER: '2.1.2'
+    DVER: '2.2'
+    PORT: 5212
+
+'alpine 3.5 2.1.3':
+  <<: *build_definition
+  variables:
+    OS: 'alpine_3.5'
+    TAG: '2.1.3'
+    VER: '2.1.3'
+    DVER: '1.x'
+    PORT: 5213
 
 'alpine 3.5 2.1':
   <<: *build_definition
@@ -46,7 +108,36 @@ before_script:
     TAG: '2.1'
     VER: '2.1'
     DVER: '2.2'
-    PORT: 3121
+    PORT: 5210
+
+# Tarantool branch 2.2
+
+'alpine 3.5 2.2.0':
+  <<: *build_definition
+  variables:
+    OS: 'alpine_3.5'
+    TAG: '2.2.0'
+    VER: '2.2.0'
+    DVER: '2.2'
+    PORT: 5220
+
+'alpine 3.5 2.2.1':
+  <<: *build_definition
+  variables:
+    OS: 'alpine_3.5'
+    TAG: '2.2.1'
+    VER: '2.2.1'
+    DVER: '2.2'
+    PORT: 5221
+
+'alpine 3.5 2.2.2':
+  <<: *build_definition
+  variables:
+    OS: 'alpine_3.5'
+    TAG: '2.2.2'
+    VER: '2.2.2'
+    DVER: '2.x'
+    PORT: 5222
 
 'alpine 3.5 2.2':
   <<: *build_definition
@@ -54,8 +145,46 @@ before_script:
     OS: 'alpine_3.5'
     TAG: '2.2'
     VER: '2.2'
-    DVER: '2.2'
-    PORT: 3122
+    DVER: '2.x'
+    PORT: 5220
+
+# Tarantool branch 2.3
+
+'alpine 3.5 2.3.1':
+  <<: *build_definition
+  variables:
+    OS: 'alpine_3.5'
+    TAG: '2.3.1'
+    VER: '2.3.1'
+    DVER: '2.x'
+    PORT: 5231
+
+'alpine 3.5 2.3':
+  <<: *build_definition
+  variables:
+    OS: 'alpine_3.5'
+    TAG: '2.3'
+    VER: '2.3'
+    DVER: '2.x'
+    PORT: 5230
+
+# Tarantool branch master
+
+'alpine 3.5 2.x':
+  <<: *build_definition
+  variables:
+    OS: 'alpine_3.5'
+    TAG: '2'
+    VER: '2.x'
+    DVER: '2.x'
+    PORT: 5200
+    TAG_LATEST: 'latest'
+
+# ########
+# CentOS 7
+# ########
+
+# Tarantool branch 1.10
 
 'centos 7 1.x':
   <<: *build_definition
@@ -64,7 +193,9 @@ before_script:
     TAG: '1.x-centos7'
     VER: '1.x'
     DVER: '1.x'
-    PORT: 3210
+    PORT: 7100
+
+# Tarantool branch master
 
 'centos 7 2.x':
   <<: *build_definition
@@ -73,5 +204,4 @@ before_script:
     TAG: '2.x-centos7'
     VER: '2.x'
     DVER: '2.x'
-    PORT: 3220
-
+    PORT: 7200

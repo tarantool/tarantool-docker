@@ -311,37 +311,36 @@ $ docker run -it tarantool/tarantool:2
 
 Fixed versions:
 
-| Branch | Dockerfile     | Docker tag |
-| ------ | ----------     | ---------- |
-| 1.7.3  | 1.7/Dockerfile | 1.7.3      |
-| 1.7.4  | 1.7/Dockerfile | 1.7.4      |
-| 1.7.5  | 1.7/Dockerfile | 1.7.5      |
-| 1.7.6  | 1.7/Dockerfile | 1.7.6      |
-| 1.8.1  | 1.8/Dockerfile | 1.8.1      |
-| 1.9.1  | 1.x/Dockerfile | 1.9.1      |
-| 1.9.2  | 1.x/Dockerfile | 1.9.2      |
-| 1.10.0 | 1.x/Dockerfile | 1.10.0     |
-| 1.10.2 | 1.x/Dockerfile | 1.10.2     |
-| 1.10.3 | 1.x/Dockerfile | 1.10.3     |
-| 2.1.1  | 2.x/Dockerfile | 2.1.1      |
-| 2.1.2  | 2.x/Dockerfile | 2.1.2      |
-| 2.2.0  | 2.x/Dockerfile | 2.2.0      |
-| 2.2.1  | 2.x/Dockerfile | 2.2.1      |
+| Docker tag | Dockerfile                   |
+| ---------- | ---------------------------- |
+| 1.10.0     | dockerfile/alpine_3.5_1.10.3 |
+| 1.10.2     | dockerfile/alpine_3.5_1.10.3 |
+| 1.10.3     | dockerfile/alpine_3.5_1.10.3 |
+| 1.10.4     | dockerfile/alpine_3.5_1.10.4 |
+| 2.1.1      | dockerfile/alpine_3.5_2.2.1  |
+| 2.1.2      | dockerfile/alpine_3.5_2.2.1  |
+| 2.1.3      | dockerfile/alpine_3.5_1.x    |
+| 2.2.0      | dockerfile/alpine_3.5_2.2.1  |
+| 2.2.1      | dockerfile/alpine_3.5_2.2.1  |
+| 2.2.2      | dockerfile/alpine_3.5_2.x    |
+| 2.3.1      | dockerfile/alpine_3.5_2.x    |
 
 Rolling versions:
 
-| Branch | Dockerfile                | Docker tags |
-| ------ | ----------                | ----------- |
-| master | dockerfile/alpine_3.5_1.x | 1           |
-| master | dockerfile/alpine_3.5_2.2 | 2.1/2.2     |
-| master | dockerfile/alpine_3.5_2.x | 2           |
+| Docker tag | Dockerfile                |
+| ---------- | ------------------------- |
+| 1          | dockerfile/alpine_3.5_1.x |
+| 2.1        | dockerfile/alpine_3.5_2.2 |
+| 2.2        | dockerfile/alpine_3.5_2.2 |
+| 2.3        | dockerfile/alpine_3.5_2.x |
+| 2/latest   | dockerfile/alpine_3.5_2.x |
 
 Special builds:
 
-| Branch | Dockerfile              | Docker tag  |
-| ------ | ----------              | ----------  |
-| master | dockerfile/centos_7_1.x | 1.x-centos7 |
-| master | dockerfile/centos_7_2.x | 2.x-centos7 |
+| Docker tag  | Dockerfile              |
+| ----------- | ----------              |
+| 1.x-centos7 | dockerfile/centos_7_1.x |
+| 2.x-centos7 | dockerfile/centos_7_2.x |
 
 ## How to push changes (for maintainers)
 

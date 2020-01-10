@@ -7,4 +7,7 @@ build:
 	docker exec -t tarantool_${TAG} tarantool_is_up
 	docker stop tarantool_${TAG}
 	docker push ${IMAGE}:${TAG}
-
+	if [ -n "${TAG_LATEST}" ] ; then \
+		docker tag ${IMAGE}:${TAG} ${IMAGE}:${TAG_LATEST} ; \
+		docker push ${IMAGE}:${TAG_LATEST} ; \
+	fi
