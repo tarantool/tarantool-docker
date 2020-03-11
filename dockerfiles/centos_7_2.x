@@ -1,11 +1,13 @@
-ARG TNT_VER
-
 FROM centos:7
 MAINTAINER mail@racktear.com
 
 RUN groupadd tarantool \
     && adduser -g tarantool tarantool
 
+# An ARG instruction goes out of scope at the end of the build
+# stage where it was defined. To use an arg in multiple stages,
+# each stage must include the ARG instruction
+ARG TNT_VER
 ENV TARANTOOL_VERSION=${TNT_VER} \
     TARANTOOL_DOWNLOAD_URL=https://github.com/tarantool/tarantool.git \
     LUAROCK_VSHARD_VERSION=0.1.14 \
