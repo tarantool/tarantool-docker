@@ -70,7 +70,7 @@ RUN set -x \
         go \
         wget \
     && : "---------- libicu ----------" \
-    && wget http://download.icu-project.org/files/icu4c/64.2/icu4c-64_2-src.tgz \
+    && wget https://github.com/unicode-org/icu/releases/download/release-64-2/icu4c-64_2-src.tgz \
     && mkdir -p /usr/src/icu \
         && tar -xzf icu4c-64_2-src.tgz -C /usr/src/icu --strip-components=1 \
         && rm icu4c-64_2-src.tgz \
