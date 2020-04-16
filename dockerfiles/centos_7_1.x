@@ -67,10 +67,10 @@ RUN set -x \
         go \
         wget \
     && : "---------- libicu ----------" \
-    && wget https://github.com/unicode-org/icu/releases/download/release-64-2/icu4c-64_2-src.tgz \
+    && wget https://github.com/unicode-org/icu/releases/download/release-65-1/icu4c-65_1-src.tgz \
     && mkdir -p /usr/src/icu \
-        && tar -xzf icu4c-64_2-src.tgz -C /usr/src/icu --strip-components=1 \
-        && rm icu4c-64_2-src.tgz \
+        && tar -xzf icu4c-65_1-src.tgz -C /usr/src/icu --strip-components=1 \
+        && rm icu4c-65_1-src.tgz \
     && (cd /usr/src/icu/source; \
         chmod +x runConfigureICU configure install-sh; \
         ./runConfigureICU Linux/gcc; \
