@@ -122,7 +122,7 @@ RUN set -x \
     && rm -rf /var/cache/yum
 
 RUN set -x \
-    && yum -y install https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-redhat96-9.6-3.noarch.rpm \
+    && yum -y install https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm \
     && yum -y install \
         mariadb-libs \
         postgresql96-libs \

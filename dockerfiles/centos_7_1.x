@@ -162,7 +162,7 @@ RUN set -x \
 COPY files/luarocks-config_centos.lua /usr/local/etc/luarocks/config-5.1.lua
 
 RUN set -x \
-    && yum -y install https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-redhat96-9.6-3.noarch.rpm \
+    && yum -y install https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm \
     && yum -y install \
         mariadb-libs \
         postgresql96-libs \
