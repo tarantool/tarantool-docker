@@ -116,15 +116,6 @@ RUN set -x \
     && make -C /usr/src/tarantool/src/lib/small \
     && make -C /usr/src/tarantool/src/lib/small install \
     && make -C /usr/src/tarantool/src/lib/small clean \
-    && : "---------- msgpuck ----------" \
-    && (cd /usr/src/tarantool/src/lib/msgpuck; \
-        cmake -DCMAKE_INSTALL_PREFIX=/usr \
-              -DCMAKE_INSTALL_LIBDIR=lib \
-              -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-              .) \
-    && make -C /usr/src/tarantool/src/lib/msgpuck \
-    && make -C /usr/src/tarantool/src/lib/msgpuck install \
-    && make -C /usr/src/tarantool/src/lib/msgpuck clean \
     && rm -rf /usr/src/tarantool \
     && rm -rf /usr/src/gperftools \
     && rm -rf /usr/src/go \
