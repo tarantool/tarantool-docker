@@ -60,7 +60,6 @@ RUN set -x \
         zlib-dev \
         binutils-dev \
         ncurses-dev \
-        lua-dev \
         musl-dev \
         make \
         git \
@@ -138,7 +137,6 @@ RUN set -x \
         gcc \
         g++ \
         postgresql-dev \
-        lua-dev \
         musl-dev \
         cyrus-sasl-dev \
         mosquitto-dev \
