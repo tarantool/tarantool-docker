@@ -101,15 +101,6 @@ RUN set -x \
     && make -C /usr/src/tarantool -j\
     && make -C /usr/src/tarantool install \
     && make -C /usr/src/tarantool clean \
-    && : "---------- small ----------" \
-    && (cd /usr/src/tarantool/src/lib/small; \
-        cmake -DCMAKE_INSTALL_PREFIX=/usr \
-              -DCMAKE_INSTALL_LIBDIR=lib \
-              -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-              .) \
-    && make -C /usr/src/tarantool/src/lib/small \
-    && make -C /usr/src/tarantool/src/lib/small install \
-    && make -C /usr/src/tarantool/src/lib/small clean \
     && : "---------- luarocks ----------" \
     && wget -O luarocks.tar.gz "$LUAROCKS_URL" \
     && mkdir -p /usr/src/luarocks \
