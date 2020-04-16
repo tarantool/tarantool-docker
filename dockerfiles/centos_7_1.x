@@ -130,7 +130,6 @@ RUN set -x \
         lz4-devel \
         binutils-devel \
         ncurses-devel \
-        lua-devel \
         make \
         git \
         libunwind-devel \
@@ -163,7 +162,6 @@ RUN set -x \
         make \
         gcc-c++ \
         postgresql96-devel \
-        lua-devel \
         cyrus-sasl-devel \
         libev-devel \
         wget \
