@@ -71,7 +71,7 @@ RUN set -x \
     && (cd /usr/src/icu/source; \
         chmod +x runConfigureICU configure install-sh; \
         ./runConfigureICU Linux/gcc; \
-        make; \
+        make -j ; \
         make install; \
         echo '/usr/local/lib' > /etc/ld.so.conf.d/local.conf; \
         ldconfig ) \

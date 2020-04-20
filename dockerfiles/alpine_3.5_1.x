@@ -83,7 +83,7 @@ RUN set -x \
         rm /gperftools_alpine.diff; \
         ./autogen.sh; \
         ./configure; \
-        make; \
+        make -j ; \
         cp .libs/libprofiler.so* /usr/local/lib;) \
     && (GOPATH=/usr/src/go go get github.com/google/pprof; \
         cp /usr/src/go/bin/pprof /usr/local/bin) \
@@ -107,7 +107,7 @@ RUN set -x \
     && tar -xzf luarocks.tar.gz -C /usr/src/luarocks --strip-components=1 \
     && (cd /usr/src/luarocks; \
         ./configure; \
-        make build; \
+        make -j build; \
         make install) \
     && rm -r /usr/src/luarocks \
     && rm -rf /usr/src/tarantool \
@@ -146,7 +146,7 @@ RUN set -x \
     && tar -xzf proj.tar.gz -C /usr/src/proj --strip-components=1 \
     && (cd /usr/src/proj; \
         ./configure; \
-        make; \
+        make -j ; \
         make install) \
     && rm -r /usr/src/proj \
     && rm -rf /usr/src/proj \
@@ -156,7 +156,7 @@ RUN set -x \
     && tar -xjf geos.tar.bz2 -C /usr/src/geos --strip-components=1 \
     && (cd /usr/src/geos; \
         ./configure; \
-        make; \
+        make -j ; \
         make install) \
     && rm -r /usr/src/geos \
     && rm -rf /usr/src/geos \
