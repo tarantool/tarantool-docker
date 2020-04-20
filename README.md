@@ -314,16 +314,28 @@ Fixed versions:
 | Docker tag | Dockerfile                   |
 | ---------- | ---------------------------- |
 | 1.10.0     | dockerfile/alpine_3.5_1.10.3 |
+| 1.10.1     | dockerfile/alpine_3.5_1.10.3 |
 | 1.10.2     | dockerfile/alpine_3.5_1.10.3 |
 | 1.10.3     | dockerfile/alpine_3.5_1.10.3 |
-| 1.10.4     | dockerfile/alpine_3.5_1.10.4 |
-| 2.1.1      | dockerfile/alpine_3.5_2.2.1  |
-| 2.1.2      | dockerfile/alpine_3.5_2.2.1  |
+| 1.10.4     | dockerfile/alpine_3.5_1.x    |
+| 1.10.5     | dockerfile/alpine_3.5_1.x    |
+| 1.10.6     | dockerfile/alpine_3.5_1.x    |
+| 2.1.0      | dockerfile/alpine_3.5_2.2    |
+| 2.1.1      | dockerfile/alpine_3.5_2.2    |
+| 2.1.2      | dockerfile/alpine_3.5_2.2    |
 | 2.1.3      | dockerfile/alpine_3.5_1.x    |
-| 2.2.0      | dockerfile/alpine_3.5_2.2.1  |
-| 2.2.1      | dockerfile/alpine_3.5_2.2.1  |
+| 2.1.3      | dockerfile/alpine_3.5_1.x    |
+| 2.2.0      | dockerfile/alpine_3.5_2.2    |
+| 2.2.1      | dockerfile/alpine_3.5_2.2    |
 | 2.2.2      | dockerfile/alpine_3.5_2.x    |
+| 2.2.3      | dockerfile/alpine_3.5_2.x    |
+| 2.2.2      | dockerfile/alpine_3.5_2.x    |
+| 2.3.0      | dockerfile/alpine_3.5_2.2    |
 | 2.3.1      | dockerfile/alpine_3.5_2.x    |
+| 2.3.2      | dockerfile/alpine_3.5_2.x    |
+| 2.4.0      | dockerfile/alpine_3.5_2.x    |
+| 2.4.1      | dockerfile/alpine_3.5_2.x    |
+| 2.5.0      | dockerfile/alpine_3.5_2.x    |
 
 Rolling versions:
 
@@ -331,8 +343,9 @@ Rolling versions:
 | ---------- | ------------------------- |
 | 1          | dockerfile/alpine_3.5_1.x |
 | 2.1        | dockerfile/alpine_3.5_2.2 |
-| 2.2        | dockerfile/alpine_3.5_2.2 |
+| 2.2        | dockerfile/alpine_3.5_2.x |
 | 2.3        | dockerfile/alpine_3.5_2.x |
+| 2.4        | dockerfile/alpine_3.5_2.x |
 | 2/latest   | dockerfile/alpine_3.5_2.x |
 
 Special builds:
@@ -357,3 +370,29 @@ versions x and x.y in master, create fixed version x.y.z.
 A maintainer is responsible to check updated images.
 
 [1]: https://tarantool.io/en/doc/1.9/dev_guide/release_management/#how-to-make-a-minor-release
+
+## How to push images (for maintainers)
+Gitlab-CI jobs after the images builds push it to its local
+images repository in the format:
+    registry.gitlab.com/tarantool/docker:<tag>
+To push collected images into the 'docker.io' repository with
+the following format:
+    docker.io/tarantool/tarantool:<tag>
+the following scripts can be used:
+
+```bash
+echo List of available tags: \
+    `grep " VER: " .gitlab-ci.yml | awk -F"'" '{print $2}'`
+```
+
+```bash
+for tag in <list of tags> ; do \
+    echo "============= $tag ==============" ; \
+    docker pull registry.gitlab.com/tarantool/docker:$tag && \
+    docker tag registry.gitlab.com/tarantool/docker:$tag \
+        tarantool/tarantool:$tag && \
+    docker push tarantool/tarantool:$tag ; \
+    echo "$tag push resulted with: $?" ; \
+done
+```
+
