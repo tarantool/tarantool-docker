@@ -5,7 +5,7 @@ RUN addgroup -S tarantool \
     && adduser -S -G tarantool tarantool \
     && apk add --no-cache 'su-exec>=0.2'
 
-# An ARG instruction goes out of scope at the end of the build 
+# An ARG instruction goes out of scope at the end of the build
 # stage where it was defined. To use an arg in multiple stages,
 # each stage must include the ARG instruction
 ARG TNT_VER
@@ -150,6 +150,7 @@ RUN set -x \
         make install) \
     && rm -r /usr/src/proj \
     && rm -rf /usr/src/proj \
+    && rm -rf /proj.tar.gz \
     && : "---------- geos (for gis module) ----------" \
     && wget -O geos.tar.bz2 http://download.osgeo.org/geos/geos-3.6.0.tar.bz2 \
     && mkdir -p /usr/src/geos \
@@ -160,6 +161,7 @@ RUN set -x \
         make install) \
     && rm -r /usr/src/geos \
     && rm -rf /usr/src/geos \
+    && rm -rf /geos.tar.bz2 \
     && : "---------- luarocks ----------" \
     && luarocks install lua-term \
     && luarocks install ldoc \
