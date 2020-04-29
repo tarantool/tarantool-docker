@@ -14,9 +14,7 @@ ENV TARANTOOL_VERSION=${TNT_VER} \
     TARANTOOL_INSTALL_LUADIR=/usr/local/share/tarantool \
     GPERFTOOLS_REPO=https://github.com/gperftools/gperftools.git \
     GPERFTOOLS_TAG=gperftools-2.5 \
-    LUAROCKS_URL=https://github.com/tarantool/luarocks/archive/6e6fe62d9409fe2103c0fd091cccb3da0451faf5.tar.gz \
-    LUAROCK_SHARD_REPO=https://github.com/tarantool/shard.git \
-    LUAROCK_SHARD_TAG=8f8c5a7 \
+    LUAROCK_VSHARD_VERSION=0.1.14 \
     LUAROCK_AVRO_SCHEMA_VERSION=3.0.3 \
     LUAROCK_EXPERATIOND_VERSION=1.0.1 \
     LUAROCK_QUEUE_VERSION=1.0.6 \
@@ -176,10 +174,8 @@ RUN set -x \
     && luarocks install queue $LUAROCK_QUEUE_VERSION \
     && : "connpool" \
     && luarocks install connpool $LUAROCK_CONNPOOL_VERSION \
-    && : "shard" \
-    && git clone $LUAROCK_SHARD_REPO /rocks/shard \
-    && git -C /rocks/shard checkout $LUAROCK_SHARD_TAG \
-    && (cd /rocks/shard && luarocks make *rockspec) \
+    && : "vshard" \
+    && luarocks install vshard $LUAROCK_VSHARD_VERSION \
     && : "http" \
     && luarocks install http $LUAROCK_HTTP_VERSION \
     && : "pg" \
@@ -197,8 +193,7 @@ RUN set -x \
     && : "gperftools" \
     && luarocks install gperftools $LUAROCK_TARANTOOL_GPERFTOOLS_VERSION \
     && : "---------- remove build deps ----------" \
-    && apk del .build-deps \
-    && rm -rf /rocks
+    && apk del .build-deps
 
 RUN mkdir -p /var/lib/tarantool \
     && chown tarantool:tarantool /var/lib/tarantool \

@@ -10,8 +10,7 @@ RUN groupadd tarantool \
 ARG TNT_VER
 ENV TARANTOOL_VERSION=${TNT_VER} \
     TARANTOOL_DOWNLOAD_URL=https://github.com/tarantool/tarantool.git \
-    LUAROCK_SHARD_REPO=https://github.com/tarantool/shard.git \
-    LUAROCK_SHARD_TAG=8f8c5a7 \
+    LUAROCK_VSHARD_VERSION=0.1.14 \
     LUAROCK_CHECKS_VERSION=3.0.1 \
     LUAROCK_AVRO_SCHEMA_VERSION=3.0.3 \
     LUAROCK_EXPERATIOND_VERSION=1.0.1 \
@@ -156,6 +155,8 @@ RUN set -x \
     && tarantoolctl rocks install lua-term \
     && : "ldoc" \
     && tarantoolctl rocks install ldoc --server=http://rocks.moonscript.org \
+    && : "vshard" \
+    && tarantoolctl rocks install vshard $LUAROCK_VSHARD_VERSION \
     && : "checks" \
     && tarantoolctl rocks install checks $LUAROCK_CHECKS_VERSION \
     && : "avro" \
@@ -166,10 +167,6 @@ RUN set -x \
     && tarantoolctl rocks install queue $LUAROCK_QUEUE_VERSION \
     && : "connpool" \
     && tarantoolctl rocks install connpool $LUAROCK_CONNPOOL_VERSION \
-    && : "shard" \
-    && git clone $LUAROCK_SHARD_REPO /rocks/shard \
-    && (cd /rocks/shard; git checkout $LUAROCK_SHARD_TAG) \
-    && (cd /rocks/shard && tarantoolctl rocks make *rockspec) \
     && : "http" \
     && tarantoolctl rocks install http $LUAROCK_HTTP_VERSION \
     && : "pg" \
