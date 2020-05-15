@@ -14,6 +14,7 @@ ENV TARANTOOL_VERSION=${TNT_VER} \
     TARANTOOL_INSTALL_LUADIR=/usr/local/share/tarantool \
     GPERFTOOLS_REPO=https://github.com/gperftools/gperftools.git \
     GPERFTOOLS_TAG=gperftools-2.5 \
+    LUAROCKS_URL=https://github.com/tarantool/luarocks/archive/6e6fe62d9409fe2103c0fd091cccb3da0451faf5.tar.gz \
     LUAROCK_VSHARD_VERSION=0.1.14 \
     LUAROCK_AVRO_SCHEMA_VERSION=3.0.3 \
     LUAROCK_EXPERATIOND_VERSION=1.0.1 \

@@ -10,6 +10,8 @@ RUN groupadd tarantool \
 ARG TNT_VER
 ENV TARANTOOL_VERSION=${TNT_VER} \
     TARANTOOL_DOWNLOAD_URL=https://github.com/tarantool/tarantool.git \
+    TARANTOOL_INSTALL_LUADIR=/usr/local/share/tarantool \
+    LUAROCKS_URL=https://github.com/tarantool/luarocks/archive/6e6fe62d9409fe2103c0fd091cccb3da0451faf5.tar.gz \
     LUAROCK_VSHARD_VERSION=0.1.14 \
     LUAROCK_CHECKS_VERSION=3.0.1 \
     LUAROCK_AVRO_SCHEMA_VERSION=3.0.3 \
@@ -56,6 +58,7 @@ RUN set -x \
         lz4-devel \
         binutils-devel \
         ncurses-devel \
+        lua-devel \
         make \
         git \
         libunwind-devel \
@@ -93,6 +96,16 @@ RUN set -x \
              .) \
     && make -C /usr/src/tarantool -j\
     && make -C /usr/src/tarantool install \
+    && make -C /usr/src/tarantool clean \
+    && : "---------- luarocks ----------" \
+    && wget -O luarocks.tar.gz "$LUAROCKS_URL" \
+    && mkdir -p /usr/src/luarocks \
+    && tar -xzf luarocks.tar.gz -C /usr/src/luarocks --strip-components=1 \
+    && (cd /usr/src/luarocks; \
+        ./configure; \
+        make -j build; \
+        make install) \
+    && rm -r /usr/src/luarocks \
     && rm -rf /usr/src/tarantool \
     && rm -rf /usr/src/go \
     && rm -rf /usr/src/icu \
@@ -121,6 +134,8 @@ RUN set -x \
         golang-src \
     && rpm -qa | grep devel | xargs yum -y remove \
     && rm -rf /var/cache/yum
+
+COPY files/luarocks-config_centos.lua /usr/local/etc/luarocks/config-5.1.lua
 
 RUN set -x \
     && yum -y install https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm \
