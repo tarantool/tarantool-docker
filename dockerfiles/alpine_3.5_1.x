@@ -84,8 +84,8 @@ RUN set -x \
         ./configure; \
         make -j ; \
         cp .libs/libprofiler.so* /usr/local/lib;) \
-    && (GOPATH=/usr/src/go go get github.com/google/pprof; \
-        cp /usr/src/go/bin/pprof /usr/local/bin) \
+    && (GOPATH=/usr/src/go go get github.com/google/pprof && \
+        cp /usr/src/go/bin/pprof /usr/local/bin || true ) \
     && : "---------- tarantool ----------" \
     && mkdir -p /usr/src/tarantool \
     && git clone "$TARANTOOL_DOWNLOAD_URL" /usr/src/tarantool \
