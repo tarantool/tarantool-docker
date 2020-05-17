@@ -80,8 +80,8 @@ RUN set -x \
         ldconfig ) \
     && : "---------- gperftools ----------" \
     && yum install -y gperftools-libs \
-    && (GOPATH=/usr/src/go go get github.com/google/pprof; \
-        cp /usr/src/go/bin/pprof /usr/local/bin) \
+    && (GOPATH=/usr/src/go go get github.com/google/pprof && \
+        cp /usr/src/go/bin/pprof /usr/local/bin || true ) \
     && : "---------- tarantool ----------" \
     && mkdir -p /usr/src/tarantool \
     && git clone "$TARANTOOL_DOWNLOAD_URL" /usr/src/tarantool \
