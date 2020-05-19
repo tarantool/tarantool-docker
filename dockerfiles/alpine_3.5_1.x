@@ -21,6 +21,7 @@ ENV TARANTOOL_VERSION=${TNT_VER} \
     LUAROCK_CONNPOOL_VERSION=1.1.1 \
     LUAROCK_HTTP_VERSION=1.1.0 \
     LUAROCK_MEMCACHED_VERSION=1.0.0 \
+    LUAROCK_METRICS_VERSION=0.2.0 \
     LUAROCK_TARANTOOL_PG_VERSION=2.0.2 \
     LUAROCK_TARANTOOL_MYSQL_VERSION=2.0.1 \
     LUAROCK_TARANTOOL_MQTT_VERSION=1.2.1 \
@@ -184,6 +185,8 @@ RUN set -x \
     && luarocks install mysql $LUAROCK_TARANTOOL_MYSQL_VERSION \
     && : "memcached" \
     && luarocks install memcached $LUAROCK_MEMCACHED_VERSION \
+    && : "metrics" \
+    && tarantoolctl rocks install metrics $LUAROCK_METRICS_VERSION \
     && : "prometheus" \
     && luarocks install prometheus $LUAROCK_TARANTOOL_PROMETHEUS_VERSION \
     && : "mqtt" \
