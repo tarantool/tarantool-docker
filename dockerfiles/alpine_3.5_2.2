@@ -1,4 +1,5 @@
-FROM alpine:3.5
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
 MAINTAINER mail@racktear.com
 
 RUN addgroup -S tarantool \

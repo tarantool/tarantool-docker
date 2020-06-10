@@ -18,8 +18,8 @@ before_script:
   script:
     - >
       if  [ ${CI_COMMIT_REF_NAME} = master ] || \
-          ${CHECK_GIT} | grep "^versions/${OS}_${VER}$" || \
-          ${CHECK_GIT} | grep "^dockerfiles/${OS}_${DVER}$" || \
+          ${CHECK_GIT} | grep "^versions/${OS}_${DIST}_${VER}$" || \
+          ${CHECK_GIT} | grep "^dockerfiles/${OS}_${DIST}_${DOCKERFILE_NAME_SUFFIX}$" || \
           ${CHECK_GIT} | grep "^files/" || \
           ${CHECK_GIT} | grep "^.gitlab-ci.yml$" || \
           ${CHECK_GIT} | grep "^.gitlab.mk$"
@@ -27,82 +27,90 @@ before_script:
         make -f .gitlab.mk build
       fi;
 
-# ##########
-# ALPINE 3.5
-# ##########
+# ##############
+# ALPINE 3.5/3.9
+# ##############
 
 # Tarantool branch 1.10
 
 'alpine 3.5 1.10.0':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    DIST: '3.5'
     TAG: '1.10.0'
     VER: '1.10.0'
-    DVER: '1.10.3'
+    DOCKERFILE_NAME_SUFFIX: '1.10.3'
     PORT: 5101
 
 'alpine 3.5 1.10.1':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    DIST: '3.5'
     TAG: '1.10.1'
     VER: '1.10.1'
-    DVER: '1.10.3'
+    DOCKERFILE_NAME_SUFFIX: '1.10.3'
     PORT: 5101
 
 'alpine 3.5 1.10.2':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    DIST: '3.5'
     TAG: '1.10.2'
     VER: '1.10.2'
-    DVER: '1.10.3'
+    DOCKERFILE_NAME_SUFFIX: '1.10.3'
     PORT: 5102
 
 'alpine 3.5 1.10.3':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    DIST: '3.5'
     TAG: '1.10.3'
     VER: '1.10.3'
-    DVER: '1.10.3'
+    DOCKERFILE_NAME_SUFFIX: '1.10.3'
     PORT: 5103
 
-'alpine 3.5 1.10.4':
+'alpine 3.9 1.10.4':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    DIST: '3.9'
     TAG: '1.10.4'
     VER: '1.10.4'
-    DVER: '1.x'
+    DOCKERFILE_NAME_SUFFIX: '1.x'
     PORT: 5104
 
-'alpine 3.5 1.10.5':
+'alpine 3.9 1.10.5':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    DIST: '3.9'
     TAG: '1.10.5'
     VER: '1.10.5'
-    DVER: '1.x'
+    DOCKERFILE_NAME_SUFFIX: '1.x'
     PORT: 5105
 
-'alpine 3.5 1.10.6':
+'alpine 3.9 1.10.6':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    DIST: '3.9'
     TAG: '1.10.6'
     VER: '1.10.6'
-    DVER: '1.x'
+    DOCKERFILE_NAME_SUFFIX: '1.x'
     PORT: 5106
 
-'alpine 3.5 1.x':
+'alpine 3.9 1.x':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    DIST: '3.9'
     TAG: '1'
     VER: '1.x'
-    DVER: '1.x'
+    DOCKERFILE_NAME_SUFFIX: '1.x'
     PORT: 5100
 
 # Tarantool branch 2.1
@@ -110,46 +118,51 @@ before_script:
 'alpine 3.5 2.1.0':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    DIST: '3.5'
     TAG: '2.1.0'
     VER: '2.1.0'
-    DVER: '2.2'
+    DOCKERFILE_NAME_SUFFIX: '2.2'
     PORT: 5211
 
 'alpine 3.5 2.1.1':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    DIST: '3.5'
     TAG: '2.1.1'
     VER: '2.1.1'
-    DVER: '2.2'
+    DOCKERFILE_NAME_SUFFIX: '2.2'
     PORT: 5211
 
 'alpine 3.5 2.1.2':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    DIST: '3.5'
     TAG: '2.1.2'
     VER: '2.1.2'
-    DVER: '2.2'
+    DOCKERFILE_NAME_SUFFIX: '2.2'
     PORT: 5212
 
-'alpine 3.5 2.1.3':
+'alpine 3.9 2.1.3':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    DIST: '3.9'
     TAG: '2.1.3'
     VER: '2.1.3'
-    DVER: '1.x'
+    DOCKERFILE_NAME_SUFFIX: '1.x'
     PORT: 5213
 
-'alpine 3.5 2.1':
+'alpine 3.9 2.1':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    DIST: '3.9'
     TAG: '2.1'
     VER: '2.1'
-    DVER: '2.2'
+    DOCKERFILE_NAME_SUFFIX: '2.2'
     PORT: 5210
 
 # Tarantool branch 2.2
@@ -157,46 +170,51 @@ before_script:
 'alpine 3.5 2.2.0':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    DIST: '3.5'
     TAG: '2.2.0'
     VER: '2.2.0'
-    DVER: '2.2'
+    DOCKERFILE_NAME_SUFFIX: '2.2'
     PORT: 5220
 
 'alpine 3.5 2.2.1':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    DIST: '3.5'
     TAG: '2.2.1'
     VER: '2.2.1'
-    DVER: '2.2'
+    DOCKERFILE_NAME_SUFFIX: '2.2'
     PORT: 5221
 
-'alpine 3.5 2.2.2':
+'alpine 3.9 2.2.2':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    DIST: '3.9'
     TAG: '2.2.2'
     VER: '2.2.2'
-    DVER: '2.x'
+    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5222
 
-'alpine 3.5 2.2.3':
+'alpine 3.9 2.2.3':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    DIST: '3.9'
     TAG: '2.2.3'
     VER: '2.2.3'
-    DVER: '2.x'
+    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5223
 
-'alpine 3.5 2.2':
+'alpine 3.9 2.2':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    DIST: '3.9'
     TAG: '2.2'
     VER: '2.2'
-    DVER: '2.x'
+    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5220
 
 # Tarantool branch 2.3
@@ -204,86 +222,95 @@ before_script:
 'alpine 3.5 2.3.0':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    DIST: '3.5'
     TAG: '2.3.0'
     VER: '2.3.0'
-    DVER: '2.2'
+    DOCKERFILE_NAME_SUFFIX: '2.2'
     PORT: 5231
 
-'alpine 3.5 2.3.1':
+'alpine 3.9 2.3.1':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    DIST: '3.9'
     TAG: '2.3.1'
     VER: '2.3.1'
-    DVER: '2.x'
+    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5231
 
-'alpine 3.5 2.3.2':
+'alpine 3.9 2.3.2':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    DIST: '3.9'
     TAG: '2.3.2'
     VER: '2.3.2'
-    DVER: '2.x'
+    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5231
 
-'alpine 3.5 2.3':
+'alpine 3.9 2.3':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    DIST: '3.9'
     TAG: '2.3'
     VER: '2.3'
-    DVER: '2.x'
+    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5230
 
 # Tarantool branch 2.4
 
-'alpine 3.5 2.4.0':
+'alpine 3.9 2.4.0':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    DIST: '3.9'
     TAG: '2.4.0'
     VER: '2.4.0'
-    DVER: '2.x'
+    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5241
 
-'alpine 3.5 2.4.1':
+'alpine 3.9 2.4.1':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    DIST: '3.9'
     TAG: '2.4.1'
     VER: '2.4.1'
-    DVER: '2.x'
+    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5241
 
-'alpine 3.5 2.4':
+'alpine 3.9 2.4':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    DIST: '3.9'
     TAG: '2.4'
     VER: '2.4'
-    DVER: '2.x'
+    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5240
 
 # Tarantool branch master
 
-'alpine 3.5 2.5.0':
+'alpine 3.9 2.5.0':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    DIST: '3.9'
     TAG: '2.5.0'
     VER: '2.5.0'
-    DVER: '2.x'
+    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5251
 
-'alpine 3.5 2.x':
+'alpine 3.9 2.x':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    DIST: '3.9'
     TAG: '2'
     VER: '2.x'
-    DVER: '2.x'
+    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5200
     TAG_LATEST: 'latest'
 
@@ -296,10 +323,11 @@ before_script:
 'centos 7 1.x':
   <<: *build_definition
   variables:
-    OS: 'centos_7'
+    OS: 'centos'
+    DIST: '7'
     TAG: '1.x-centos7'
     VER: '1.x'
-    DVER: '1.x'
+    DOCKERFILE_NAME_SUFFIX: '1.x'
     PORT: 7100
 
 # Tarantool branch master
@@ -307,8 +335,9 @@ before_script:
 'centos 7 2.x':
   <<: *build_definition
   variables:
-    OS: 'centos_7'
+    OS: 'centos'
+    DIST: '7'
     TAG: '2.x-centos7'
     VER: '2.x'
-    DVER: '2.x'
+    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 7200
