@@ -1,4 +1,5 @@
-FROM centos:7
+ARG IMG
+FROM ${IMG}
 MAINTAINER mail@racktear.com
 
 RUN groupadd tarantool \
