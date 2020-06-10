@@ -39,7 +39,7 @@ before_script:
     OS_VER: '3.5'
     TAG: '1.10.0'
     VER: '1.10.0'
-    DVER: '1.10.3'
+    DVER: '1.x'
     PORT: 5101
 
 'alpine 3.5 1.10.1':
@@ -49,7 +49,7 @@ before_script:
     OS_VER: '3.5'
     TAG: '1.10.1'
     VER: '1.10.1'
-    DVER: '1.10.3'
+    DVER: '1.x'
     PORT: 5101
 
 'alpine 3.5 1.10.2':
@@ -59,7 +59,7 @@ before_script:
     OS_VER: '3.5'
     TAG: '1.10.2'
     VER: '1.10.2'
-    DVER: '1.10.3'
+    DVER: '1.x'
     PORT: 5102
 
 'alpine 3.5 1.10.3':
@@ -69,7 +69,7 @@ before_script:
     OS_VER: '3.5'
     TAG: '1.10.3'
     VER: '1.10.3'
-    DVER: '1.10.3'
+    DVER: '1.x'
     PORT: 5103
 
 'alpine 3.5 1.10.4':
@@ -121,7 +121,7 @@ before_script:
     OS_VER: '3.5'
     TAG: '2.1.0'
     VER: '2.1.0'
-    DVER: '2.2'
+    DVER: '2.x'
     PORT: 5211
 
 'alpine 3.5 2.1.1':
@@ -131,7 +131,7 @@ before_script:
     OS_VER: '3.5'
     TAG: '2.1.1'
     VER: '2.1.1'
-    DVER: '2.2'
+    DVER: '2.x'
     PORT: 5211
 
 'alpine 3.5 2.1.2':
@@ -141,7 +141,7 @@ before_script:
     OS_VER: '3.5'
     TAG: '2.1.2'
     VER: '2.1.2'
-    DVER: '2.2'
+    DVER: '2.x'
     PORT: 5212
 
 'alpine 3.5 2.1.3':
@@ -173,7 +173,7 @@ before_script:
     OS_VER: '3.5'
     TAG: '2.2.0'
     VER: '2.2.0'
-    DVER: '2.2'
+    DVER: '2.x'
     PORT: 5220
 
 'alpine 3.5 2.2.1':
@@ -183,7 +183,7 @@ before_script:
     OS_VER: '3.5'
     TAG: '2.2.1'
     VER: '2.2.1'
-    DVER: '2.2'
+    DVER: '2.x'
     PORT: 5221
 
 'alpine 3.5 2.2.2':
@@ -225,7 +225,7 @@ before_script:
     OS_VER: '3.5'
     TAG: '2.3.0'
     VER: '2.3.0'
-    DVER: '2.2'
+    DVER: '2.x'
     PORT: 5231
 
 'alpine 3.5 2.3.1':
