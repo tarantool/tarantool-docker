@@ -14,12 +14,13 @@ before_script:
   stage: build
   tags:
     - deploy_test
+  interruptible: true
   script:
     - >
       if  echo ${CI_COMMIT_REF_NAME} | grep "master" || \
           echo ${CI_COMMIT_REF_NAME} | grep "^.*-force-build$" || \
-          ${CHECK_GIT} | grep "^versions/${OS}_${VER}$" || \
-          ${CHECK_GIT} | grep "^dockerfiles/${OS}_${DVER}$" || \
+          ${CHECK_GIT} | grep "^versions/${OS}_${OS_VER}_${VER}$" || \
+          ${CHECK_GIT} | grep "^dockerfiles/${OS}_${OS_VER}_${DVER}$" || \
           ${CHECK_GIT} | grep "^files/"
       then
         make -f .gitlab.mk build
@@ -34,7 +35,8 @@ before_script:
 'alpine 3.5 1.10.0':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    OS_VER: '3.5'
     TAG: '1.10.0'
     VER: '1.10.0'
     DVER: '1.10.3'
@@ -43,7 +45,8 @@ before_script:
 'alpine 3.5 1.10.1':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    OS_VER: '3.5'
     TAG: '1.10.1'
     VER: '1.10.1'
     DVER: '1.10.3'
@@ -52,7 +55,8 @@ before_script:
 'alpine 3.5 1.10.2':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    OS_VER: '3.5'
     TAG: '1.10.2'
     VER: '1.10.2'
     DVER: '1.10.3'
@@ -61,7 +65,8 @@ before_script:
 'alpine 3.5 1.10.3':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    OS_VER: '3.5'
     TAG: '1.10.3'
     VER: '1.10.3'
     DVER: '1.10.3'
@@ -70,7 +75,8 @@ before_script:
 'alpine 3.5 1.10.4':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    OS_VER: '3.9'
     TAG: '1.10.4'
     VER: '1.10.4'
     DVER: '1.x'
@@ -79,7 +85,8 @@ before_script:
 'alpine 3.5 1.10.5':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    OS_VER: '3.9'
     TAG: '1.10.5'
     VER: '1.10.5'
     DVER: '1.x'
@@ -88,7 +95,8 @@ before_script:
 'alpine 3.5 1.10.6':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    OS_VER: '3.9'
     TAG: '1.10.6'
     VER: '1.10.6'
     DVER: '1.x'
@@ -97,7 +105,8 @@ before_script:
 'alpine 3.5 1.x':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    OS_VER: '3.9'
     TAG: '1'
     VER: '1.x'
     DVER: '1.x'
@@ -108,7 +117,8 @@ before_script:
 'alpine 3.5 2.1.0':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    OS_VER: '3.5'
     TAG: '2.1.0'
     VER: '2.1.0'
     DVER: '2.2'
@@ -117,7 +127,8 @@ before_script:
 'alpine 3.5 2.1.1':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    OS_VER: '3.5'
     TAG: '2.1.1'
     VER: '2.1.1'
     DVER: '2.2'
@@ -126,7 +137,8 @@ before_script:
 'alpine 3.5 2.1.2':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    OS_VER: '3.5'
     TAG: '2.1.2'
     VER: '2.1.2'
     DVER: '2.2'
@@ -135,7 +147,8 @@ before_script:
 'alpine 3.5 2.1.3':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    OS_VER: '3.9'
     TAG: '2.1.3'
     VER: '2.1.3'
     DVER: '1.x'
@@ -144,10 +157,11 @@ before_script:
 'alpine 3.5 2.1':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    OS_VER: '3.9'
     TAG: '2.1'
     VER: '2.1'
-    DVER: '2.2'
+    DVER: '1.x'
     PORT: 5210
 
 # Tarantool branch 2.2
@@ -155,7 +169,8 @@ before_script:
 'alpine 3.5 2.2.0':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    OS_VER: '3.5'
     TAG: '2.2.0'
     VER: '2.2.0'
     DVER: '2.2'
@@ -164,7 +179,8 @@ before_script:
 'alpine 3.5 2.2.1':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    OS_VER: '3.5'
     TAG: '2.2.1'
     VER: '2.2.1'
     DVER: '2.2'
@@ -173,7 +189,8 @@ before_script:
 'alpine 3.5 2.2.2':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    OS_VER: '3.9'
     TAG: '2.2.2'
     VER: '2.2.2'
     DVER: '2.x'
@@ -182,7 +199,8 @@ before_script:
 'alpine 3.5 2.2.3':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    OS_VER: '3.9'
     TAG: '2.2.3'
     VER: '2.2.3'
     DVER: '2.x'
@@ -191,7 +209,8 @@ before_script:
 'alpine 3.5 2.2':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    OS_VER: '3.9'
     TAG: '2.2'
     VER: '2.2'
     DVER: '2.x'
@@ -202,7 +221,8 @@ before_script:
 'alpine 3.5 2.3.0':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    OS_VER: '3.5'
     TAG: '2.3.0'
     VER: '2.3.0'
     DVER: '2.2'
@@ -211,7 +231,8 @@ before_script:
 'alpine 3.5 2.3.1':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    OS_VER: '3.9'
     TAG: '2.3.1'
     VER: '2.3.1'
     DVER: '2.x'
@@ -220,7 +241,8 @@ before_script:
 'alpine 3.5 2.3.2':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    OS_VER: '3.9'
     TAG: '2.3.2'
     VER: '2.3.2'
     DVER: '2.x'
@@ -229,7 +251,8 @@ before_script:
 'alpine 3.5 2.3':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    OS_VER: '3.9'
     TAG: '2.3'
     VER: '2.3'
     DVER: '2.x'
@@ -240,7 +263,8 @@ before_script:
 'alpine 3.5 2.4.0':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    OS_VER: '3.9'
     TAG: '2.4.0'
     VER: '2.4.0'
     DVER: '2.x'
@@ -249,7 +273,8 @@ before_script:
 'alpine 3.5 2.4.1':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    OS_VER: '3.9'
     TAG: '2.4.1'
     VER: '2.4.1'
     DVER: '2.x'
@@ -258,7 +283,8 @@ before_script:
 'alpine 3.5 2.4':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    OS_VER: '3.9'
     TAG: '2.4'
     VER: '2.4'
     DVER: '2.x'
@@ -269,7 +295,8 @@ before_script:
 'alpine 3.5 2.5.0':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    OS_VER: '3.9'
     TAG: '2.5.0'
     VER: '2.5.0'
     DVER: '2.x'
@@ -278,7 +305,8 @@ before_script:
 'alpine 3.5 2.x':
   <<: *build_definition
   variables:
-    OS: 'alpine_3.5'
+    OS: 'alpine'
+    OS_VER: '3.9'
     TAG: '2'
     VER: '2.x'
     DVER: '2.x'
@@ -294,7 +322,8 @@ before_script:
 'centos 7 1.x':
   <<: *build_definition
   variables:
-    OS: 'centos_7'
+    OS: 'centos'
+    OS_VER: '7'
     TAG: '1.x-centos7'
     VER: '1.x'
     DVER: '1.x'
@@ -305,7 +334,8 @@ before_script:
 'centos 7 2.x':
   <<: *build_definition
   variables:
-    OS: 'centos_7'
+    OS: 'centos'
+    OS_VER: '7'
     TAG: '2.x-centos7'
     VER: '2.x'
     DVER: '2.x'
