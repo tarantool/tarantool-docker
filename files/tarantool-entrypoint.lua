@@ -181,6 +181,7 @@ local function wrapper_cfg(override)
         file_cfg.TARANTOOL_SLAB_ALLOC_MINIMAL = os.getenv('TARANTOOL_SLAB_ALLOC_MINIMAL')
         file_cfg.TARANTOOL_SLAB_ALLOC_MAXIMAL = os.getenv('TARANTOOL_SLAB_ALLOC_MAXIMAL')
         file_cfg.TARANTOOL_PORT = os.getenv('TARANTOOL_PORT')
+        file_cfg.TARANTOOL_FORCE_RECOVERY = os.getenv('TARANTOOL_FORCE_RECOVERY')
         file_cfg.TARANTOOL_WAL_MODE = os.getenv('TARANTOOL_WAL_MODE')
         file_cfg.TARANTOOL_REPLICATION_SOURCE = os.getenv('TARANTOOL_REPLICATION_SOURCE')
         file_cfg.TARANTOOL_REPLICATION = os.getenv('TARANTOOL_REPLICATION')
@@ -233,6 +234,8 @@ local function wrapper_cfg(override)
         override.listen or TARANTOOL_DEFAULT_PORT
     cfg.wal_mode = file_cfg.TARANTOOL_WAL_MODE or
         override.wal_mode
+
+    cfg.force_recovery = file_cfg.TARANTOOL_FORCE_RECOVERY == 'true'
 
     cfg.wal_dir = override.wal_dir or '/var/lib/tarantool'
     cfg.vinyl_dir = override.vinyl_dir or '/var/lib/tarantool'

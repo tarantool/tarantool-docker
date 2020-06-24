@@ -86,6 +86,7 @@ local vars = {
     TARANTOOL_SLAB_ALLOC_MAXIMAL=nop,
     TARANTOOL_SLAB_ALLOC_MINIMAL=nop,
     TARANTOOL_PORT=nop,
+    TARANTOOL_FORCE_RECOVERY=nop,
     TARANTOOL_WAL_MODE=nop,
     TARANTOOL_USER_NAME=update_credentials,
     TARANTOOL_USER_PASSWORD=update_credentials,

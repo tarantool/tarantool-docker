@@ -287,6 +287,10 @@ decreased if most of the tuples are very small. Default is 16.
 Optional. Specifies how often snapshots will be made, in seconds.
 Default is 3600 (every 1 hour).
 
+### `TARANTOOL_FORCE_RECOVERY`
+
+Optional. When set to "true" Tarantool tries to continue if there is an error while reading a snapshot file or a write-ahead log file. Skips invalid records, reads as much data as possible, print a warning in console and start the database.
+
 # Reporting problems and getting help
 
 You can report problems and request
