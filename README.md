@@ -66,6 +66,7 @@ is only one Tarantool instance running in the container.
 - [pg](https://github.com/tarantool/pg): Query PostgreSQL right from Tarantool
 - [mysql](https://github.com/tarantool/mysql): Query MySql right from Tarantool
 - [memcached](https://github.com/tarantool/memcached): Access Tarantool as if it was a Memcached instance
+- [metrics](https://github.com/tarantool/metrics): Metric collection library for Tarantool
 - [prometheus](https://github.com/tarantool/prometheus): Instrument code and export metrics to Prometheus monitoring
 - [mqtt](https://github.com/tarantool/mqtt): Client for MQTT message brokers
 - [gis](https://github.com/tarantool/gis): store and query geospatial data
