@@ -238,6 +238,10 @@ Tarantool. In the above example, it is set to "mysecretpassword".
 Optional. Specifying this variable will tell Tarantool to listen for
 incoming connections on a specific port. Default is 3301.
 
+### `TARANTOOL_PROMETHEUS_DEFAULT_METRICS_PORT`
+
+Optional. If specified tarantool will start http server on given port and expose prometheus `metrics` endpoint with common metrics (fibers, memory, network, replication, etc... )
+
 ### `TARANTOOL_REPLICATION`
 
 Optional. Comma-separated list of URIs to treat as replication

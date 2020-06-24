@@ -264,6 +264,14 @@ local function wrapper_cfg(override)
 
     console.listen(CONSOLE_SOCKET_PATH)
 
+    local metrics_port = tonumber(os.getenv('TARANTOOL_PROMETHEUS_DEFAULT_METRICS_PORT')) or 0
+    if metrics_port > 0 then
+        require('metrics.default_metrics.tarantool').enable()
+        local prometheus = require('metrics.plugins.prometheus')
+        local httpd = require('http.server').new('0.0.0.0', metrics_port)
+        httpd:route( { path = '/metrics' }, prometheus.collect_http)
+        httpd:start()
+    end
 end
 
 box.cfg = wrapper_cfg
