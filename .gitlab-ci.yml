@@ -14,6 +14,7 @@ before_script:
   stage: build
   tags:
     - deploy_test
+  interruptible: true
   script:
     - >
       if  [ ${CI_COMMIT_REF_NAME} = master ] || \
