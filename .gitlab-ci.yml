@@ -162,7 +162,7 @@ before_script:
     DIST: '3.9'
     TAG: '2.1'
     VER: '2.1'
-    DOCKERFILE_NAME_SUFFIX: '2.2'
+    DOCKERFILE_NAME_SUFFIX: '1.x'
     PORT: 5210
 
 # Tarantool branch 2.2

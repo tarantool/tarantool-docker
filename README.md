@@ -340,7 +340,7 @@ Rolling versions:
 | Docker tag | Dockerfile                |
 | ---------- | ------------------------- |
 | 1          | dockerfile/alpine_3.9_1.x |
-| 2.1        | dockerfile/alpine_3.9_2.2 |
+| 2.1        | dockerfile/alpine_3.9_1.x |
 | 2.2        | dockerfile/alpine_3.9_2.x |
 | 2.3        | dockerfile/alpine_3.9_2.x |
 | 2.4        | dockerfile/alpine_3.9_2.x |
