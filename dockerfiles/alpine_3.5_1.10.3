@@ -94,8 +94,24 @@ RUN set -x \
         ./configure; \
         make -j ; \
         cp .libs/libprofiler.so* /usr/local/lib;) \
-    && (GOPATH=/usr/src/go go get github.com/google/pprof; \
-        cp /usr/src/go/bin/pprof /usr/local/bin) \
+    && : "---------- pprof for gperftools ----------" \
+    && : "To avoid of the issue:" \
+    && : "'The master branch is Incompatible with go version < 1.13 #538'" \
+    && : "https://github.com/google/pprof/issues/538" \
+    && : "use latest workable commits with the old GO versions" \
+    && ( export GOPATH=/root/go && \
+       export PATH=${GOPATH}/bin:/usr/local/go/bin:$PATH && \
+       export GOBIN=$GOROOT/bin && \
+       mkdir -p ${GOPATH}/src ${GOPATH}/bin && \
+       go get github.com/google/pprof || : && \
+       cd /root/go/src/github.com/google/pprof && \
+       git checkout 160c4290d1d8cee56daa51d7ba5d223291d392aa && \
+       ( cd /root/go/src/github.com/chzyer/readline && \
+       git checkout f6d7a1f6fbf35bbf9beb80dc63c56a29dcfb759f ) && \
+       ( cd /root/go/src/github.com/ianlancetaylor/demangle && \
+       git checkout 039b1ae3a3406573c84daaf91166d70ad2bc0519 ) && \
+       go build && \
+       cp pprof /usr/local/bin/pprof ) \
     && : "---------- tarantool ----------" \
     && mkdir -p /usr/src/tarantool \
     && git clone "$TARANTOOL_DOWNLOAD_URL" /usr/src/tarantool \
