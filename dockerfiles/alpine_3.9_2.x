@@ -135,7 +135,11 @@ RUN set -x \
     && : "---------- remove build deps ----------" \
     && apk del .build-deps
 
+RUN mkdir -p /usr/local/etc/luarocks \
+    && mkdir -p /usr/local/etc/tarantool/rocks
+
 COPY files/luarocks-config.lua /usr/local/etc/luarocks/config-5.1.lua
+COPY files/luarocks-config.lua /usr/local/etc/tarantool/rocks/config-5.1.lua
 
 RUN set -x \
     && apk add --no-cache --virtual .run-deps \
@@ -185,7 +189,7 @@ RUN set -x \
     && : "---------- luarocks ----------" \
     && cd / \
     && : "ldoc" \
-    && tarantoolctl rocks install ldoc --server=http://rocks.moonscript.org \
+    && tarantoolctl rocks install ldoc \
     && : "lua-term" \
     && tarantoolctl rocks install lua-term \
     && : "avro" \

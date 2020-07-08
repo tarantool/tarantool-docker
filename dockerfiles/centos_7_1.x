@@ -140,7 +140,11 @@ RUN set -x \
     && rpm -qa | grep devel | xargs yum -y remove \
     && rm -rf /var/cache/yum
 
+RUN mkdir -p /usr/local/etc/luarocks \
+    && mkdir -p /usr/local/etc/tarantool/rocks
+
 COPY files/luarocks-config_centos.lua /usr/local/etc/luarocks/config-5.1.lua
+COPY files/luarocks-config.lua /usr/local/etc/tarantool/rocks/config-5.1.lua
 
 RUN set -x \
     && yum -y install https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm \
@@ -170,7 +174,7 @@ RUN set -x \
     && : "lua-term" \
     && tarantoolctl rocks install lua-term \
     && : "ldoc" \
-    && tarantoolctl rocks install ldoc --server=http://rocks.moonscript.org \
+    && tarantoolctl rocks install ldoc \
     && : "vshard" \
     && tarantoolctl rocks install vshard $LUAROCK_VSHARD_VERSION \
     && : "checks" \
