@@ -106,6 +106,16 @@ before_script:
     ROCKS_INSTALLER: 'luarocks'
     ENABLE_BUNDLED_LIBYAML: 'OFF'
 
+'alpine 3.9 1.10.7':
+  <<: *build_definition
+  variables:
+    OS: 'alpine'
+    DIST: '3.9'
+    TAG: '1.10.7'
+    VER: '1.10.7'
+    PORT: 5107
+    ROCKS_INSTALLER: 'luarocks'
+
 'alpine 3.9 1.x':
   <<: *build_definition
   variables:
@@ -247,6 +257,15 @@ before_script:
     VER: '2.3.2'
     PORT: 5231
 
+'alpine 3.9 2.3.3':
+  <<: *build_definition
+  variables:
+    OS: 'alpine'
+    DIST: '3.9'
+    TAG: '2.3.3'
+    VER: '2.3.3'
+    PORT: 5233
+
 'alpine 3.9 2.3':
   <<: *build_definition
   variables:
@@ -276,6 +295,15 @@ before_script:
     VER: '2.4.1'
     PORT: 5241
 
+'alpine 3.9 2.4.2':
+  <<: *build_definition
+  variables:
+    OS: 'alpine'
+    DIST: '3.9'
+    TAG: '2.4.2'
+    VER: '2.4.2'
+    PORT: 5242
+
 'alpine 3.9 2.4':
   <<: *build_definition
   variables:
@@ -285,7 +313,7 @@ before_script:
     VER: '2.4'
     PORT: 5240
 
-# Tarantool branch master
+# Tarantool branch 2.5
 
 'alpine 3.9 2.5.0':
   <<: *build_definition
@@ -295,6 +323,35 @@ before_script:
     TAG: '2.5.0'
     VER: '2.5.0'
     PORT: 5251
+
+'alpine 3.9 2.5.1':
+  <<: *build_definition
+  variables:
+    OS: 'alpine'
+    DIST: '3.9'
+    TAG: '2.5.1'
+    VER: '2.5.1'
+    PORT: 5252
+
+'alpine 3.9 2.5':
+  <<: *build_definition
+  variables:
+    OS: 'alpine'
+    DIST: '3.9'
+    TAG: '2.5'
+    VER: '2.5'
+    PORT: 5250
+
+# Tarantool branch master
+
+'alpine 3.9 2.6.0':
+  <<: *build_definition
+  variables:
+    OS: 'alpine'
+    DIST: '3.9'
+    TAG: '2.6.0'
+    VER: '2.6.0'
+    PORT: 5260
 
 'alpine 3.9 2.x':
   <<: *build_definition

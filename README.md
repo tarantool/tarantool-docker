@@ -328,6 +328,7 @@ Fixed versions:
 | 1.10.4     | dockerfile/alpine_3.9 |
 | 1.10.5     | dockerfile/alpine_3.9 |
 | 1.10.6     | dockerfile/alpine_3.9 |
+| 1.10.7     | dockerfile/alpine_3.9 |
 | 2.1.0      | dockerfile/alpine_3.5 |
 | 2.1.1      | dockerfile/alpine_3.5 |
 | 2.1.2      | dockerfile/alpine_3.5 |
@@ -339,9 +340,13 @@ Fixed versions:
 | 2.3.0      | dockerfile/alpine_3.5 |
 | 2.3.1      | dockerfile/alpine_3.9 |
 | 2.3.2      | dockerfile/alpine_3.9 |
+| 2.3.3      | dockerfile/alpine_3.9 |
 | 2.4.0      | dockerfile/alpine_3.9 |
 | 2.4.1      | dockerfile/alpine_3.9 |
+| 2.4.2      | dockerfile/alpine_3.9 |
 | 2.5.0      | dockerfile/alpine_3.9 |
+| 2.5.1      | dockerfile/alpine_3.9 |
+| 2.6.0      | dockerfile/alpine_3.9 |
 
 Rolling versions:
 
@@ -352,6 +357,7 @@ Rolling versions:
 | 2.2        | dockerfile/alpine_3.9 |
 | 2.3        | dockerfile/alpine_3.9 |
 | 2.4        | dockerfile/alpine_3.9 |
+| 2.5        | dockerfile/alpine_3.9 |
 | 2/latest   | dockerfile/alpine_3.9 |
 
 Special builds:
