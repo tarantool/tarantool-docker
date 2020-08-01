@@ -142,6 +142,7 @@ RUN mkdir -p /usr/local/etc/luarocks \
 COPY files/luarocks-config.lua /usr/local/etc/luarocks/config-5.1.lua
 COPY files/luarocks-config.lua /usr/local/etc/tarantool/rocks/config-5.1.lua
 
+ARG ROCKS_INSTALLER
 RUN set -x \
     && apk add --no-cache --virtual .run-deps \
         mariadb-client-libs \
@@ -188,37 +189,37 @@ RUN set -x \
     && rm -rf /geos.tar.bz2 \
     && : "---------- luarocks ----------" \
     && : "ldoc" \
-    && luarocks install ldoc \
+    && ${ROCKS_INSTALLER} install ldoc \
     && : "lua-term" \
-    && luarocks install lua-term \
+    && ${ROCKS_INSTALLER} install lua-term \
     && : "avro" \
-    && luarocks install avro-schema $LUAROCK_AVRO_SCHEMA_VERSION \
+    && ${ROCKS_INSTALLER} install avro-schema $LUAROCK_AVRO_SCHEMA_VERSION \
     && : "expirationd" \
-    && luarocks install expirationd $LUAROCK_EXPERATIOND_VERSION \
+    && ${ROCKS_INSTALLER} install expirationd $LUAROCK_EXPERATIOND_VERSION \
     && : "queue" \
-    && luarocks install queue $LUAROCK_QUEUE_VERSION \
+    && ${ROCKS_INSTALLER} install queue $LUAROCK_QUEUE_VERSION \
     && : "connpool" \
-    && luarocks install connpool $LUAROCK_CONNPOOL_VERSION \
+    && ${ROCKS_INSTALLER} install connpool $LUAROCK_CONNPOOL_VERSION \
     && : "vshard" \
-    && luarocks install vshard $LUAROCK_VSHARD_VERSION \
+    && ${ROCKS_INSTALLER} install vshard $LUAROCK_VSHARD_VERSION \
     && : "http" \
-    && luarocks install http $LUAROCK_HTTP_VERSION \
+    && ${ROCKS_INSTALLER} install http $LUAROCK_HTTP_VERSION \
     && : "pg" \
-    && luarocks install pg $LUAROCK_TARANTOOL_PG_VERSION \
+    && ${ROCKS_INSTALLER} install pg $LUAROCK_TARANTOOL_PG_VERSION \
     && : "mysql" \
-    && luarocks install mysql $LUAROCK_TARANTOOL_MYSQL_VERSION \
+    && ${ROCKS_INSTALLER} install mysql $LUAROCK_TARANTOOL_MYSQL_VERSION \
     && : "memcached" \
-    && luarocks install memcached $LUAROCK_MEMCACHED_VERSION \
+    && ${ROCKS_INSTALLER} install memcached $LUAROCK_MEMCACHED_VERSION \
     && : "metrics" \
-    && luarocks install metrics $LUAROCK_METRICS_VERSION \
+    && ${ROCKS_INSTALLER} install metrics $LUAROCK_METRICS_VERSION \
     && : "prometheus" \
-    && luarocks install prometheus $LUAROCK_TARANTOOL_PROMETHEUS_VERSION \
+    && ${ROCKS_INSTALLER} install prometheus $LUAROCK_TARANTOOL_PROMETHEUS_VERSION \
     && : "mqtt" \
-    && luarocks install mqtt $LUAROCK_TARANTOOL_MQTT_VERSION \
+    && ${ROCKS_INSTALLER} install mqtt $LUAROCK_TARANTOOL_MQTT_VERSION \
     && : "gis" \
-    && luarocks install gis $LUAROCK_TARANTOOL_GIS_VERSION \
+    && ${ROCKS_INSTALLER} install gis $LUAROCK_TARANTOOL_GIS_VERSION \
     && : "gperftools" \
-    && luarocks install gperftools $LUAROCK_TARANTOOL_GPERFTOOLS_VERSION \
+    && ${ROCKS_INSTALLER} install gperftools $LUAROCK_TARANTOOL_GPERFTOOLS_VERSION \
     && : "---------- remove build deps ----------" \
     && apk del .build-deps
 

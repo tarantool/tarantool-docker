@@ -82,6 +82,7 @@ before_script:
     VER: '1.10.4'
     DOCKERFILE_NAME_SUFFIX: '1.x'
     PORT: 5104
+    ROCKS_INSTALLER: 'luarocks'
 
 'alpine 3.9 1.10.5':
   <<: *build_definition
@@ -92,6 +93,7 @@ before_script:
     VER: '1.10.5'
     DOCKERFILE_NAME_SUFFIX: '1.x'
     PORT: 5105
+    ROCKS_INSTALLER: 'luarocks'
 
 'alpine 3.9 1.10.6':
   <<: *build_definition
@@ -102,6 +104,7 @@ before_script:
     VER: '1.10.6'
     DOCKERFILE_NAME_SUFFIX: '1.x'
     PORT: 5106
+    ROCKS_INSTALLER: 'luarocks'
 
 'alpine 3.9 1.x':
   <<: *build_definition
@@ -112,6 +115,7 @@ before_script:
     VER: '1.x'
     DOCKERFILE_NAME_SUFFIX: '1.x'
     PORT: 5100
+    ROCKS_INSTALLER: 'luarocks'
 
 # Tarantool branch 2.1
 
@@ -154,6 +158,7 @@ before_script:
     VER: '2.1.3'
     DOCKERFILE_NAME_SUFFIX: '1.x'
     PORT: 5213
+    ROCKS_INSTALLER: 'luarocks'
 
 'alpine 3.9 2.1':
   <<: *build_definition
@@ -164,6 +169,7 @@ before_script:
     VER: '2.1'
     DOCKERFILE_NAME_SUFFIX: '1.x'
     PORT: 5210
+    ROCKS_INSTALLER: 'luarocks'
 
 # Tarantool branch 2.2
 
