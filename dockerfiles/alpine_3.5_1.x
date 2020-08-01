@@ -36,6 +36,7 @@ ENV TARANTOOL_VERSION=${TNT_VER} \
 
 COPY files/gperftools_alpine.diff /
 
+ARG ENABLE_BUNDLED_LIBYAML
 RUN set -x \
     && apk add --no-cache --virtual .run-deps \
         libstdc++ \
@@ -120,7 +121,7 @@ RUN set -x \
     && git -C /usr/src/tarantool submodule update --init --recursive \
     && (cd /usr/src/tarantool; \
        cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo\
-             -DENABLE_BUNDLED_LIBYAML:BOOL=OFF\
+             -DENABLE_BUNDLED_LIBYAML:BOOL=${ENABLE_BUNDLED_LIBYAML}\
              -DENABLE_BACKTRACE:BOOL=ON\
              -DENABLE_DIST:BOOL=ON\
              .) \

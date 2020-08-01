@@ -33,6 +33,7 @@ ENV TARANTOOL_VERSION=${TNT_VER} \
 
 COPY files/gperftools_alpine.diff /
 
+ARG ENABLE_BUNDLED_LIBYAML
 RUN set -x \
     && apk add --no-cache --virtual .run-deps \
         libstdc++ \
@@ -113,7 +114,7 @@ RUN set -x \
        git cherry-pick d7fa6d34ab4e0956fe8a80966ba628e0e3f81067 2>/dev/null || \
            git cherry-pick --abort ; \
        cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo\
-             -DENABLE_BUNDLED_LIBYAML:BOOL=ON\
+             -DENABLE_BUNDLED_LIBYAML:BOOL=${ENABLE_BUNDLED_LIBYAML}\
              -DENABLE_BACKTRACE:BOOL=ON\
              -DENABLE_DIST:BOOL=ON\
              .) \

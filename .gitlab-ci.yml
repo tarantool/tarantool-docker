@@ -42,6 +42,7 @@ before_script:
     VER: '1.10.0'
     DOCKERFILE_NAME_SUFFIX: '1.x'
     PORT: 5101
+    ENABLE_BUNDLED_LIBYAML: 'OFF'
 
 'alpine 3.5 1.10.1':
   <<: *build_definition
@@ -52,6 +53,7 @@ before_script:
     VER: '1.10.1'
     DOCKERFILE_NAME_SUFFIX: '1.x'
     PORT: 5101
+    ENABLE_BUNDLED_LIBYAML: 'OFF'
 
 'alpine 3.5 1.10.2':
   <<: *build_definition
@@ -62,6 +64,7 @@ before_script:
     VER: '1.10.2'
     DOCKERFILE_NAME_SUFFIX: '1.x'
     PORT: 5102
+    ENABLE_BUNDLED_LIBYAML: 'OFF'
 
 'alpine 3.5 1.10.3':
   <<: *build_definition
@@ -72,6 +75,7 @@ before_script:
     VER: '1.10.3'
     DOCKERFILE_NAME_SUFFIX: '1.x'
     PORT: 5103
+    ENABLE_BUNDLED_LIBYAML: 'OFF'
 
 'alpine 3.9 1.10.4':
   <<: *build_definition
@@ -83,6 +87,7 @@ before_script:
     DOCKERFILE_NAME_SUFFIX: '1.x'
     PORT: 5104
     ROCKS_INSTALLER: 'luarocks'
+    ENABLE_BUNDLED_LIBYAML: 'OFF'
 
 'alpine 3.9 1.10.5':
   <<: *build_definition
@@ -94,6 +99,7 @@ before_script:
     DOCKERFILE_NAME_SUFFIX: '1.x'
     PORT: 5105
     ROCKS_INSTALLER: 'luarocks'
+    ENABLE_BUNDLED_LIBYAML: 'OFF'
 
 'alpine 3.9 1.10.6':
   <<: *build_definition
@@ -105,6 +111,7 @@ before_script:
     DOCKERFILE_NAME_SUFFIX: '1.x'
     PORT: 5106
     ROCKS_INSTALLER: 'luarocks'
+    ENABLE_BUNDLED_LIBYAML: 'OFF'
 
 'alpine 3.9 1.x':
   <<: *build_definition
@@ -128,6 +135,7 @@ before_script:
     VER: '2.1.0'
     DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5211
+    ENABLE_BUNDLED_LIBYAML: 'OFF'
 
 'alpine 3.5 2.1.1':
   <<: *build_definition
@@ -138,6 +146,7 @@ before_script:
     VER: '2.1.1'
     DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5211
+    ENABLE_BUNDLED_LIBYAML: 'OFF'
 
 'alpine 3.5 2.1.2':
   <<: *build_definition
@@ -148,6 +157,7 @@ before_script:
     VER: '2.1.2'
     DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5212
+    ENABLE_BUNDLED_LIBYAML: 'OFF'
 
 'alpine 3.9 2.1.3':
   <<: *build_definition
@@ -159,6 +169,7 @@ before_script:
     DOCKERFILE_NAME_SUFFIX: '1.x'
     PORT: 5213
     ROCKS_INSTALLER: 'luarocks'
+    ENABLE_BUNDLED_LIBYAML: 'OFF'
 
 'alpine 3.9 2.1':
   <<: *build_definition
@@ -170,6 +181,7 @@ before_script:
     DOCKERFILE_NAME_SUFFIX: '1.x'
     PORT: 5210
     ROCKS_INSTALLER: 'luarocks'
+    ENABLE_BUNDLED_LIBYAML: 'OFF'
 
 # Tarantool branch 2.2
 
@@ -182,6 +194,7 @@ before_script:
     VER: '2.2.0'
     DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5220
+    ENABLE_BUNDLED_LIBYAML: 'OFF'
 
 'alpine 3.5 2.2.1':
   <<: *build_definition
