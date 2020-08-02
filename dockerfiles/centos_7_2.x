@@ -49,7 +49,6 @@ RUN set -x \
         libunwind \
         ca-certificates \
     && yum -y install \
-        perl \
         file \
         gcc-c++ \
         cmake \
@@ -112,7 +111,6 @@ RUN set -x \
     && rm -rf /usr/src/icu \
     && : "---------- remove build deps ----------" \
     && yum -y remove \
-        perl \
         file \
         gcc-c++ \
         cmake \
@@ -130,7 +128,6 @@ RUN set -x \
         libtool \
         go \
         wget \
-        perl \
         kernel-headers \
         golang-src \
     && rpm -qa | grep devel | xargs yum -y remove \
@@ -214,7 +211,6 @@ RUN set -x \
         proj-devel \
         geos-devel \
         openssl-devel \
-        perl \
         kernel-headers \
         golang-src \
     && rpm -qa | grep devel | xargs yum -y remove \

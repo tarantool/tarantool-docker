@@ -52,7 +52,6 @@ RUN set -x \
         icu \
         ca-certificates \
     && apk add --no-cache --virtual .build-deps \
-        perl \
         gcc \
         g++ \
         cmake \
