@@ -164,6 +164,7 @@ RUN set -x \
         mosquitto-dev \
         libev-dev \
         wget \
+        unzip \
     && mkdir -p /rocks \
     && : "---------- proj (for gis module) ----------" \
     && wget -O proj.tar.gz http://download.osgeo.org/proj/proj-4.9.3.tar.gz \
