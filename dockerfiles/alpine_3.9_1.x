@@ -38,7 +38,7 @@ RUN set -x \
     && apk add --no-cache --virtual .run-deps \
         libstdc++ \
         readline \
-        libressl \
+        openssl \
         yaml \
         lz4 \
         binutils \
@@ -57,7 +57,7 @@ RUN set -x \
         cmake \
         file \
         readline-dev \
-        libressl-dev \
+        openssl-dev \
         yaml-dev \
         lz4-dev \
         zlib-dev \
