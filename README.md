@@ -307,11 +307,10 @@ A maintaner is responsible for merging the PR.
 
 ## How to check
 
-Say, we have updated dockerfiles/alpine_3.9_2.x and want to check it:
+Say, we have updated 'dockerfiles/alpine_3.9' and want to check it:
 
 ```sh
-$ IMAGE=tarantool/tarantool TAG=2 OS=alpine DIST=3.9 VER=2.x DOCKERFILE_NAME_SUFFIX=2.x \
-        PORT=5200 make -f .gitlab.mk build
+$ TAG=2 OS=alpine DIST=3.9 VER=2.x PORT=5200 make -f .gitlab.mk build
 $ docker run -it tarantool/tarantool:2
 ...perform a test...
 ```
@@ -326,34 +325,34 @@ Fixed versions:
 | 1.10.1     | dockerfile/alpine_3.5_1.x |
 | 1.10.2     | dockerfile/alpine_3.5_1.x |
 | 1.10.3     | dockerfile/alpine_3.5_1.x |
-| 1.10.4     | dockerfile/alpine_3.9_1.x |
-| 1.10.5     | dockerfile/alpine_3.9_1.x |
-| 1.10.6     | dockerfile/alpine_3.9_1.x |
+| 1.10.4     | dockerfile/alpine_3.9     |
+| 1.10.5     | dockerfile/alpine_3.9     |
+| 1.10.6     | dockerfile/alpine_3.9     |
 | 2.1.0      | dockerfile/alpine_3.5_2.x |
 | 2.1.1      | dockerfile/alpine_3.5_2.x |
 | 2.1.2      | dockerfile/alpine_3.5_2.x |
-| 2.1.3      | dockerfile/alpine_3.9_1.x |
+| 2.1.3      | dockerfile/alpine_3.9     |
 | 2.2.0      | dockerfile/alpine_3.5_2.x |
 | 2.2.1      | dockerfile/alpine_3.5_2.x |
-| 2.2.2      | dockerfile/alpine_3.9_2.x |
-| 2.2.3      | dockerfile/alpine_3.9_2.x |
+| 2.2.2      | dockerfile/alpine_3.9     |
+| 2.2.3      | dockerfile/alpine_3.9     |
 | 2.3.0      | dockerfile/alpine_3.5_2.x |
-| 2.3.1      | dockerfile/alpine_3.9_2.x |
-| 2.3.2      | dockerfile/alpine_3.9_2.x |
-| 2.4.0      | dockerfile/alpine_3.9_2.x |
-| 2.4.1      | dockerfile/alpine_3.9_2.x |
-| 2.5.0      | dockerfile/alpine_3.9_2.x |
+| 2.3.1      | dockerfile/alpine_3.9     |
+| 2.3.2      | dockerfile/alpine_3.9     |
+| 2.4.0      | dockerfile/alpine_3.9     |
+| 2.4.1      | dockerfile/alpine_3.9     |
+| 2.5.0      | dockerfile/alpine_3.9     |
 
 Rolling versions:
 
-| Docker tag | Dockerfile                |
-| ---------- | ------------------------- |
-| 1          | dockerfile/alpine_3.9_1.x |
-| 2.1        | dockerfile/alpine_3.9_1.x |
-| 2.2        | dockerfile/alpine_3.9_2.x |
-| 2.3        | dockerfile/alpine_3.9_2.x |
-| 2.4        | dockerfile/alpine_3.9_2.x |
-| 2/latest   | dockerfile/alpine_3.9_2.x |
+| Docker tag | Dockerfile            |
+| ---------- | --------------------- |
+| 1          | dockerfile/alpine_3.9 |
+| 2.1        | dockerfile/alpine_3.9 |
+| 2.2        | dockerfile/alpine_3.9 |
+| 2.3        | dockerfile/alpine_3.9 |
+| 2.4        | dockerfile/alpine_3.9 |
+| 2/latest   | dockerfile/alpine_3.9 |
 
 Special builds:
 

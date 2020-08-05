@@ -84,7 +84,6 @@ before_script:
     DIST: '3.9'
     TAG: '1.10.4'
     VER: '1.10.4'
-    DOCKERFILE_NAME_SUFFIX: '1.x'
     PORT: 5104
     ROCKS_INSTALLER: 'luarocks'
     ENABLE_BUNDLED_LIBYAML: 'OFF'
@@ -96,7 +95,6 @@ before_script:
     DIST: '3.9'
     TAG: '1.10.5'
     VER: '1.10.5'
-    DOCKERFILE_NAME_SUFFIX: '1.x'
     PORT: 5105
     ROCKS_INSTALLER: 'luarocks'
     ENABLE_BUNDLED_LIBYAML: 'OFF'
@@ -108,7 +106,6 @@ before_script:
     DIST: '3.9'
     TAG: '1.10.6'
     VER: '1.10.6'
-    DOCKERFILE_NAME_SUFFIX: '1.x'
     PORT: 5106
     ROCKS_INSTALLER: 'luarocks'
     ENABLE_BUNDLED_LIBYAML: 'OFF'
@@ -120,7 +117,6 @@ before_script:
     DIST: '3.9'
     TAG: '1'
     VER: '1.x'
-    DOCKERFILE_NAME_SUFFIX: '1.x'
     PORT: 5100
     ROCKS_INSTALLER: 'luarocks'
 
@@ -166,7 +162,6 @@ before_script:
     DIST: '3.9'
     TAG: '2.1.3'
     VER: '2.1.3'
-    DOCKERFILE_NAME_SUFFIX: '1.x'
     PORT: 5213
     ROCKS_INSTALLER: 'luarocks'
     ENABLE_BUNDLED_LIBYAML: 'OFF'
@@ -178,7 +173,6 @@ before_script:
     DIST: '3.9'
     TAG: '2.1'
     VER: '2.1'
-    DOCKERFILE_NAME_SUFFIX: '1.x'
     PORT: 5210
     ROCKS_INSTALLER: 'luarocks'
     ENABLE_BUNDLED_LIBYAML: 'OFF'
@@ -213,7 +207,6 @@ before_script:
     DIST: '3.9'
     TAG: '2.2.2'
     VER: '2.2.2'
-    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5222
 
 'alpine 3.9 2.2.3':
@@ -223,7 +216,6 @@ before_script:
     DIST: '3.9'
     TAG: '2.2.3'
     VER: '2.2.3'
-    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5223
 
 'alpine 3.9 2.2':
@@ -233,7 +225,6 @@ before_script:
     DIST: '3.9'
     TAG: '2.2'
     VER: '2.2'
-    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5220
 
 # Tarantool branch 2.3
@@ -255,7 +246,6 @@ before_script:
     DIST: '3.9'
     TAG: '2.3.1'
     VER: '2.3.1'
-    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5231
 
 'alpine 3.9 2.3.2':
@@ -265,7 +255,6 @@ before_script:
     DIST: '3.9'
     TAG: '2.3.2'
     VER: '2.3.2'
-    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5231
 
 'alpine 3.9 2.3':
@@ -275,7 +264,6 @@ before_script:
     DIST: '3.9'
     TAG: '2.3'
     VER: '2.3'
-    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5230
 
 # Tarantool branch 2.4
@@ -287,7 +275,6 @@ before_script:
     DIST: '3.9'
     TAG: '2.4.0'
     VER: '2.4.0'
-    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5241
 
 'alpine 3.9 2.4.1':
@@ -297,7 +284,6 @@ before_script:
     DIST: '3.9'
     TAG: '2.4.1'
     VER: '2.4.1'
-    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5241
 
 'alpine 3.9 2.4':
@@ -307,7 +293,6 @@ before_script:
     DIST: '3.9'
     TAG: '2.4'
     VER: '2.4'
-    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5240
 
 # Tarantool branch master
@@ -319,7 +304,6 @@ before_script:
     DIST: '3.9'
     TAG: '2.5.0'
     VER: '2.5.0'
-    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5251
 
 'alpine 3.9 2.x':
@@ -329,7 +313,6 @@ before_script:
     DIST: '3.9'
     TAG: '2'
     VER: '2.x'
-    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5200
     TAG_LATEST: 'latest'
 
