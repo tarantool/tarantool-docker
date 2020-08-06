@@ -319,7 +319,6 @@ before_script:
     DIST: '7'
     TAG: '1.x-centos7'
     VER: '1.x'
-    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 7100
 
 # Tarantool branch master
@@ -331,5 +330,4 @@ before_script:
     DIST: '7'
     TAG: '2.x-centos7'
     VER: '2.x'
-    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 7200
