@@ -28,9 +28,19 @@ ENV TARANTOOL_VERSION=${TNT_VER} \
     LUAROCK_TARANTOOL_PROMETHEUS_VERSION=1.0.4 \
     LUAROCK_TARANTOOL_GPERFTOOLS_VERSION=1.0.1
 
-RUN yum -y install epel-release && \
-    yum -y update && \
-    yum -y clean all
+# gh-183: let's give a chance for OS update to finish successfully
+RUN cnt=10 ; \
+    while [[ $cnt > 0 ]] ; do \
+        yum -y install epel-release && \
+        yum -y update && \
+        yum -y clean all && \
+        break ; \
+        echo "=========================================================" ; \
+        echo "ERROR: epel-release failed to install, retries left: $cnt" ; \
+        echo "=========================================================" ; \
+        cnt=$(($cnt-1)) ; \
+    done && \
+    if [ $cnt -eq 0 ] ; then exit 1 ; fi
 
 RUN set -x \
     && yum -y install \
