@@ -128,21 +128,21 @@ before_script:
     PORT: 5211
     ENABLE_BUNDLED_LIBYAML: 'OFF'
 
-'alpine 3.5 2.1.1':
+'alpine 3.9 2.1.1':
   <<: *build_definition
   variables:
     OS: 'alpine'
-    DIST: '3.5'
+    DIST: '3.9'
     TAG: '2.1.1'
     VER: '2.1.1'
     PORT: 5211
     ENABLE_BUNDLED_LIBYAML: 'OFF'
 
-'alpine 3.5 2.1.2':
+'alpine 3.9 2.1.2':
   <<: *build_definition
   variables:
     OS: 'alpine'
-    DIST: '3.5'
+    DIST: '3.9'
     TAG: '2.1.2'
     VER: '2.1.2'
     PORT: 5212
@@ -172,21 +172,21 @@ before_script:
 
 # Tarantool branch 2.2
 
-'alpine 3.5 2.2.0':
+'alpine 3.9 2.2.0':
   <<: *build_definition
   variables:
     OS: 'alpine'
-    DIST: '3.5'
+    DIST: '3.9'
     TAG: '2.2.0'
     VER: '2.2.0'
     PORT: 5220
     ENABLE_BUNDLED_LIBYAML: 'OFF'
 
-'alpine 3.5 2.2.1':
+'alpine 3.9 2.2.1':
   <<: *build_definition
   variables:
     OS: 'alpine'
-    DIST: '3.5'
+    DIST: '3.9'
     TAG: '2.2.1'
     VER: '2.2.1'
     PORT: 5221
@@ -220,11 +220,11 @@ before_script:
 
 # Tarantool branch 2.3
 
-'alpine 3.5 2.3.0':
+'alpine 3.9 2.3.0':
   <<: *build_definition
   variables:
     OS: 'alpine'
-    DIST: '3.5'
+    DIST: '3.9'
     TAG: '2.3.0'
     VER: '2.3.0'
     PORT: 5231
