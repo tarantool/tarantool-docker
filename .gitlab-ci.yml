@@ -40,7 +40,7 @@ before_script:
     DIST: '3.5'
     TAG: '1.10.0'
     VER: '1.10.0'
-    DOCKERFILE_NAME_SUFFIX: '1.x'
+    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5101
     ENABLE_BUNDLED_LIBYAML: 'OFF'
 
@@ -51,7 +51,7 @@ before_script:
     DIST: '3.5'
     TAG: '1.10.1'
     VER: '1.10.1'
-    DOCKERFILE_NAME_SUFFIX: '1.x'
+    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5101
     ENABLE_BUNDLED_LIBYAML: 'OFF'
 
@@ -62,7 +62,7 @@ before_script:
     DIST: '3.5'
     TAG: '1.10.2'
     VER: '1.10.2'
-    DOCKERFILE_NAME_SUFFIX: '1.x'
+    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5102
     ENABLE_BUNDLED_LIBYAML: 'OFF'
 
@@ -73,7 +73,7 @@ before_script:
     DIST: '3.5'
     TAG: '1.10.3'
     VER: '1.10.3'
-    DOCKERFILE_NAME_SUFFIX: '1.x'
+    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5103
     ENABLE_BUNDLED_LIBYAML: 'OFF'
 
