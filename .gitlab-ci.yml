@@ -40,7 +40,6 @@ before_script:
     DIST: '3.5'
     TAG: '1.10.0'
     VER: '1.10.0'
-    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5101
     ENABLE_BUNDLED_LIBYAML: 'OFF'
 
@@ -51,7 +50,6 @@ before_script:
     DIST: '3.5'
     TAG: '1.10.1'
     VER: '1.10.1'
-    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5101
     ENABLE_BUNDLED_LIBYAML: 'OFF'
 
@@ -62,7 +60,6 @@ before_script:
     DIST: '3.5'
     TAG: '1.10.2'
     VER: '1.10.2'
-    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5102
     ENABLE_BUNDLED_LIBYAML: 'OFF'
 
@@ -73,7 +70,6 @@ before_script:
     DIST: '3.5'
     TAG: '1.10.3'
     VER: '1.10.3'
-    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5103
     ENABLE_BUNDLED_LIBYAML: 'OFF'
 
@@ -129,7 +125,6 @@ before_script:
     DIST: '3.5'
     TAG: '2.1.0'
     VER: '2.1.0'
-    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5211
     ENABLE_BUNDLED_LIBYAML: 'OFF'
 
@@ -140,7 +135,6 @@ before_script:
     DIST: '3.5'
     TAG: '2.1.1'
     VER: '2.1.1'
-    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5211
     ENABLE_BUNDLED_LIBYAML: 'OFF'
 
@@ -151,7 +145,6 @@ before_script:
     DIST: '3.5'
     TAG: '2.1.2'
     VER: '2.1.2'
-    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5212
     ENABLE_BUNDLED_LIBYAML: 'OFF'
 
@@ -186,7 +179,6 @@ before_script:
     DIST: '3.5'
     TAG: '2.2.0'
     VER: '2.2.0'
-    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5220
     ENABLE_BUNDLED_LIBYAML: 'OFF'
 
@@ -197,7 +189,6 @@ before_script:
     DIST: '3.5'
     TAG: '2.2.1'
     VER: '2.2.1'
-    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5221
 
 'alpine 3.9 2.2.2':
@@ -236,7 +227,6 @@ before_script:
     DIST: '3.5'
     TAG: '2.3.0'
     VER: '2.3.0'
-    DOCKERFILE_NAME_SUFFIX: '2.x'
     PORT: 5231
 
 'alpine 3.9 2.3.1':
