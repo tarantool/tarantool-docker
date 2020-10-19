@@ -35,7 +35,7 @@ COPY files/gperftools_alpine.diff /
 
 ARG ENABLE_BUNDLED_LIBYAML
 RUN set -x \
-    && apk add --no-cache --virtual .run-deps \
+    && apk add --no-cache --virtual .run-deps.1 \
         libstdc++ \
         readline \
         openssl \
@@ -51,7 +51,7 @@ RUN set -x \
         libunwind \
         icu \
         ca-certificates \
-    && apk add --no-cache --virtual .build-deps \
+    && apk add --no-cache --virtual .build-deps.1 \
         gcc \
         g++ \
         cmake \
@@ -134,7 +134,7 @@ RUN set -x \
     && rm -rf /usr/src/gperftools \
     && rm -rf /usr/src/go \
     && : "---------- remove build deps ----------" \
-    && apk del .build-deps
+    && apk del .build-deps.1
 
 RUN mkdir -p /usr/local/etc/luarocks \
     && mkdir -p /usr/local/etc/tarantool/rocks
@@ -144,13 +144,13 @@ COPY files/luarocks-config.lua /usr/local/etc/tarantool/rocks/config-5.1.lua
 
 ARG ROCKS_INSTALLER
 RUN set -x \
-    && apk add --no-cache --virtual .run-deps \
+    && apk add --no-cache --virtual .run-deps.2 \
         mariadb-connector-c-dev \
         libpq \
         cyrus-sasl \
         mosquitto-libs \
         libev \
-    && apk add --no-cache --virtual .build-deps \
+    && apk add --no-cache --virtual .build-deps.2 \
         git \
         cmake \
         make \
@@ -222,7 +222,7 @@ RUN set -x \
     && : "gperftools" \
     && ${ROCKS_INSTALLER} install gperftools $LUAROCK_TARANTOOL_GPERFTOOLS_VERSION \
     && : "---------- remove build deps ----------" \
-    && apk del .build-deps
+    && apk del .build-deps.2
 
 # gh-170: needed for luarocks
 RUN apk update \
