@@ -145,7 +145,7 @@ COPY files/luarocks-config.lua /usr/local/etc/tarantool/rocks/config-5.1.lua
 ARG ROCKS_INSTALLER
 RUN set -x \
     && apk add --no-cache --virtual .run-deps \
-        mariadb-client-libs \
+        mariadb-connector-c-dev \
         libpq \
         cyrus-sasl \
         mosquitto-libs \
