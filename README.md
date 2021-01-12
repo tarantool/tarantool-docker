@@ -319,46 +319,29 @@ $ docker run -it tarantool/tarantool:2
 
 Fixed versions:
 
-| Docker tag | Dockerfile            |
-| ---------- | --------------------- |
-| 1.10.0     | dockerfile/alpine_3.5 |
-| 1.10.1     | dockerfile/alpine_3.5 |
-| 1.10.2     | dockerfile/alpine_3.5 |
-| 1.10.3     | dockerfile/alpine_3.5 |
-| 1.10.4     | dockerfile/alpine_3.9 |
-| 1.10.5     | dockerfile/alpine_3.9 |
-| 1.10.6     | dockerfile/alpine_3.9 |
-| 1.10.7     | dockerfile/alpine_3.9 |
-| 2.1.0      | dockerfile/alpine_3.5 |
-| 2.1.1      | dockerfile/alpine_3.5 |
-| 2.1.2      | dockerfile/alpine_3.5 |
-| 2.1.3      | dockerfile/alpine_3.9 |
-| 2.2.0      | dockerfile/alpine_3.5 |
-| 2.2.1      | dockerfile/alpine_3.5 |
-| 2.2.2      | dockerfile/alpine_3.9 |
-| 2.2.3      | dockerfile/alpine_3.9 |
-| 2.3.0      | dockerfile/alpine_3.5 |
-| 2.3.1      | dockerfile/alpine_3.9 |
-| 2.3.2      | dockerfile/alpine_3.9 |
-| 2.3.3      | dockerfile/alpine_3.9 |
-| 2.4.0      | dockerfile/alpine_3.9 |
-| 2.4.1      | dockerfile/alpine_3.9 |
-| 2.4.2      | dockerfile/alpine_3.9 |
-| 2.5.0      | dockerfile/alpine_3.9 |
-| 2.5.1      | dockerfile/alpine_3.9 |
-| 2.6.0      | dockerfile/alpine_3.9 |
+| Docker tag       | Dockerfile            |
+| ---------------- | --------------------- |
+| 1.10.0 .. 1.10.3 | dockerfile/alpine_3.5 |
+| 1.10.4 .. 1.10.9 | dockerfile/alpine_3.9 |
+| 2.1.0  .. 2.1.2  | dockerfile/alpine_3.5 |
+| 2.1.3            | dockerfile/alpine_3.9 |
+| 2.2.0  .. 2.2.1  | dockerfile/alpine_3.5 |
+| 2.2.2  .. 2.2.3  | dockerfile/alpine_3.9 |
+| 2.3.0            | dockerfile/alpine_3.5 |
+| 2.3.1  .. 2.3.3  | dockerfile/alpine_3.9 |
+| 2.4.0  .. 2.4.3  | dockerfile/alpine_3.9 |
+| 2.5.0  .. 2.5.3  | dockerfile/alpine_3.9 |
+| 2.6.0  .. 2.6.2  | dockerfile/alpine_3.9 |
+| 2.7.0  .. 2.7.1  | dockerfile/alpine_3.9 |
+| 2.8.0            | dockerfile/alpine_3.9 |
 
 Rolling versions:
 
 | Docker tag | Dockerfile            |
 | ---------- | --------------------- |
 | 1          | dockerfile/alpine_3.9 |
-| 2.1        | dockerfile/alpine_3.9 |
-| 2.2        | dockerfile/alpine_3.9 |
-| 2.3        | dockerfile/alpine_3.9 |
-| 2.4        | dockerfile/alpine_3.9 |
-| 2.5        | dockerfile/alpine_3.9 |
-| 2/latest   | dockerfile/alpine_3.9 |
+| 2.1 .. 2.7 | dockerfile/alpine_3.9 |
+| 2, latest  | dockerfile/alpine_3.9 |
 
 Special builds:
 
@@ -373,17 +356,24 @@ All images are pushed to [Docker Hub](docker_hub_tags).
 
 Fixed version tags (`x.y.z`) are frozen: we never update them.
 
-Rolling versions are updated to the last fixed version tags:
+Example of minor versions timeline:
+
+- `x.y.0` - Alpha
+  - `x.y.1` - Beta
+    - `x.y.2` - Stable
+      - `x.y.3` - Stable
+
+Rolling versions are updated to the last stable fixed version tags:
 
 - `x.y` == `x.y.<last-z>` (`==` means 'points to the same image')
-- `1` == `1.<last-y>.<last-z>`
-- `2` == `2.<last-y>.<last-z>`
+- `1` == `1.<last-y>.2`
+- `2` == `2.<last-y>.2`
 - `latest` == `2`
 
-Special builds (CentOS) are updated with the same policy as rolling versions:
+Special stable builds (CentOS) are updated with the same policy as rolling versions:
 
-- `1.x-centos7` image offers a last `1.<last-y>.<last-z>` release
-- `2.x-centos7` image offers a last `2.<last-y>.<last-z>` release
+- `1.x-centos7` image offers a last `1.<last-y>.2` release
+- `2.x-centos7` image offers a last `2.<last-y>.2` release
 
 [docker_hub_tags]: https://hub.docker.com/r/tarantool/tarantool/tags
 
