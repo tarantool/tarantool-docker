@@ -51,7 +51,7 @@ RUN set -x \
     && yum -y install \
         file \
         gcc-c++ \
-        cmake \
+        cmake3 \
         readline-devel \
         openssl-devel \
         zlib-devel \
@@ -89,7 +89,7 @@ RUN set -x \
     && (cd /usr/src/tarantool; git checkout "$TARANTOOL_VERSION";) \
     && (cd /usr/src/tarantool; git submodule update --init --recursive;) \
     && (cd /usr/src/tarantool; \
-       cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo\
+       cmake3 -DCMAKE_BUILD_TYPE=RelWithDebInfo\
              -DENABLE_BUNDLED_LIBYAML:BOOL=ON\
              -DENABLE_BACKTRACE:BOOL=ON\
              -DENABLE_DIST:BOOL=ON\
@@ -113,7 +113,7 @@ RUN set -x \
     && yum -y remove \
         file \
         gcc-c++ \
-        cmake \
+        cmake3 \
         readline-devel \
         openssl-devel \
         lz4-devel \
