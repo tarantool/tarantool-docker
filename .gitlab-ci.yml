@@ -146,6 +146,17 @@ before_script:
     PORT: 5109
     ROCKS_INSTALLER: 'luarocks'
 
+'alpine 3.9 1.10.10':
+  <<: *build_definition
+  when: manual
+  variables:
+    OS: 'alpine'
+    DIST: '3.9'
+    TAG: '1.10.10'
+    VER: '1.10.10'
+    PORT: 5110
+    ROCKS_INSTALLER: 'luarocks'
+
 'alpine 3.9 1.x':
   <<: *build_definition
   variables:
@@ -416,6 +427,7 @@ before_script:
 
 'alpine 3.9 2.5':
   <<: *build_definition
+  when: manual
   variables:
     OS: 'alpine'
     DIST: '3.9'
@@ -455,6 +467,16 @@ before_script:
     VER: '2.6.2'
     PORT: 5262
 
+'alpine 3.9 2.6.3':
+  <<: *build_definition
+  when: manual
+  variables:
+    OS: 'alpine'
+    DIST: '3.9'
+    TAG: '2.6.3'
+    VER: '2.6.3'
+    PORT: 5263
+
 'alpine 3.9 2.6':
   <<: *build_definition
   variables:
@@ -486,6 +508,16 @@ before_script:
     VER: '2.7.1'
     PORT: 5271
 
+'alpine 3.9 2.7.2':
+  <<: *build_definition
+  when: manual
+  variables:
+    OS: 'alpine'
+    DIST: '3.9'
+    TAG: '2.7.2'
+    VER: '2.7.2'
+    PORT: 5272
+
 'alpine 3.9 2.7':
   <<: *build_definition
   variables:
@@ -495,7 +527,7 @@ before_script:
     VER: '2.7'
     PORT: 5279
 
-# Tarantool branch master
+# Tarantool branch 2.8
 
 'alpine 3.9 2.8.0':
   <<: *build_definition
@@ -506,6 +538,37 @@ before_script:
     TAG: '2.8.0'
     VER: '2.8.0'
     PORT: 5270
+
+'alpine 3.9 2.8.1':
+  <<: *build_definition
+  when: manual
+  variables:
+    OS: 'alpine'
+    DIST: '3.9'
+    TAG: '2.8.1'
+    VER: '2.8.1'
+    PORT: 5281
+
+'alpine 3.9 2.8':
+  <<: *build_definition
+  variables:
+    OS: 'alpine'
+    DIST: '3.9'
+    TAG: '2.8'
+    VER: '2.8'
+    PORT: 5289
+
+# Tarantool branch master
+
+'alpine 3.9 2.9.0':
+  <<: *build_definition
+  when: manual
+  variables:
+    OS: 'alpine'
+    DIST: '3.9'
+    TAG: '2.9.0'
+    VER: '2.9.0'
+    PORT: 5290
 
 'alpine 3.9 2.x':
   <<: *build_definition

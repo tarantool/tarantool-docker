@@ -331,16 +331,17 @@ Fixed versions:
 | 2.3.1  .. 2.3.3  | dockerfile/alpine_3.9 |
 | 2.4.0  .. 2.4.3  | dockerfile/alpine_3.9 |
 | 2.5.0  .. 2.5.3  | dockerfile/alpine_3.9 |
-| 2.6.0  .. 2.6.2  | dockerfile/alpine_3.9 |
-| 2.7.0  .. 2.7.1  | dockerfile/alpine_3.9 |
-| 2.8.0            | dockerfile/alpine_3.9 |
+| 2.6.0  .. 2.6.3  | dockerfile/alpine_3.9 |
+| 2.7.0  .. 2.7.2  | dockerfile/alpine_3.9 |
+| 2.8.0  .. 2.8.1  | dockerfile/alpine_3.9 |
+| 2.9.0            | dockerfile/alpine_3.9 |
 
 Rolling versions:
 
 | Docker tag | Dockerfile            |
 | ---------- | --------------------- |
 | 1          | dockerfile/alpine_3.9 |
-| 2.1 .. 2.7 | dockerfile/alpine_3.9 |
+| 2.1 .. 2.8 | dockerfile/alpine_3.9 |
 | 2, latest  | dockerfile/alpine_3.9 |
 
 Special builds:
