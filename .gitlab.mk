@@ -10,6 +10,7 @@ build:
 	docker build --no-cache --network=host \
 		--build-arg ROCKS_INSTALLER=${ROCKS_INSTALLER} \
 		--build-arg ENABLE_BUNDLED_LIBYAML=${ENABLE_BUNDLED_LIBYAML} \
+		--build-arg INSTALL_LDECNUMBER=${INSTALL_LDECNUMBER} \
 		--build-arg TNT_VER=${TNT_VER} \
 		--build-arg BASE_IMAGE="${OS}:${DIST}" \
 		-t ${IMAGE}:${TAG} -f dockerfiles/${OS}_${DIST}$${DOCKERFILE_SUFFIX} .

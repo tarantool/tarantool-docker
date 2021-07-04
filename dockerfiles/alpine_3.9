@@ -29,7 +29,8 @@ ENV TARANTOOL_VERSION=${TNT_VER} \
     LUAROCK_TARANTOOL_MQTT_VERSION=1.2.1 \
     LUAROCK_TARANTOOL_GIS_VERSION=1.0.0 \
     LUAROCK_TARANTOOL_PROMETHEUS_VERSION=1.0.4 \
-    LUAROCK_TARANTOOL_GPERFTOOLS_VERSION=1.0.1
+    LUAROCK_TARANTOOL_GPERFTOOLS_VERSION=1.0.1 \
+    LDECNUMBER_ROCKSPEC=https://raw.githubusercontent.com/tarantool/ldecnumber/master/ldecnumber-scm-1.rockspec
 
 COPY files/gperftools_alpine.diff /
 
@@ -220,7 +221,17 @@ RUN set -x \
     && : "gis" \
     && ${ROCKS_INSTALLER} install gis $LUAROCK_TARANTOOL_GIS_VERSION \
     && : "gperftools" \
-    && ${ROCKS_INSTALLER} install gperftools $LUAROCK_TARANTOOL_GPERFTOOLS_VERSION \
+    && ${ROCKS_INSTALLER} install gperftools $LUAROCK_TARANTOOL_GPERFTOOLS_VERSION
+
+ARG INSTALL_LDECNUMBER
+RUN set -x ; \
+    if [ "${INSTALL_LDECNUMBER}" == "ON" ]; then \
+        cd / \
+        && : "ldecnumber" \
+        && ${ROCKS_INSTALLER} install $LDECNUMBER_ROCKSPEC ; \
+    fi
+
+RUN cd / \
     && : "---------- remove build deps ----------" \
     && apk del .build-deps.2
 

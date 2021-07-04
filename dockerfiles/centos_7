@@ -26,7 +26,8 @@ ENV TARANTOOL_VERSION=${TNT_VER} \
     LUAROCK_TARANTOOL_MYSQL_VERSION=2.0.1 \
     LUAROCK_TARANTOOL_GIS_VERSION=1.0.0 \
     LUAROCK_TARANTOOL_PROMETHEUS_VERSION=1.0.4 \
-    LUAROCK_TARANTOOL_GPERFTOOLS_VERSION=1.0.1
+    LUAROCK_TARANTOOL_GPERFTOOLS_VERSION=1.0.1 \
+    LDECNUMBER_ROCKSPEC=https://raw.githubusercontent.com/tarantool/ldecnumber/master/ldecnumber-scm-1.rockspec
 
 RUN yum -y install epel-release && \
     yum -y update && \
@@ -195,9 +196,19 @@ RUN set -x \
     && : "gis" \
     && tarantoolctl rocks install gis $LUAROCK_TARANTOOL_GIS_VERSION \
     && : "gperftools" \
-    && tarantoolctl rocks install gperftools $LUAROCK_TARANTOOL_GPERFTOOLS_VERSION \
+    && tarantoolctl rocks install gperftools $LUAROCK_TARANTOOL_GPERFTOOLS_VERSION
+
+ARG INSTALL_LDECNUMBER
+RUN set -x ; \
+    if [ "${INSTALL_LDECNUMBER}" == "ON" ]; then \
+        cd / \
+        && : "ldecnumber" \
+        && ${ROCKS_INSTALLER} install $LDECNUMBER_ROCKSPEC ; \
+    fi
+
+RUN cd / \
     && : "---------- remove build deps ----------" \
-    && rm -rf /rocks \
+    && apk del .build-deps \
     && yum -y remove \
         git \
         cmake \
@@ -215,7 +226,6 @@ RUN set -x \
         golang-src \
     && rpm -qa | grep devel | xargs yum -y remove \
     && rm -rf /var/cache/yum
-
 
 RUN set -x \
     && : "---------- gosu ----------" \
