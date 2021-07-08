@@ -60,7 +60,7 @@ is only one Tarantool instance running in the container.
 - [expirationd](https://github.com/tarantool/expirationd): Automatically delete tuples based on expiration time
 - [queue](https://github.com/tarantool/queue): Priority queues with TTL and confirmations
 - [connpool](https://github.com/tarantool/connpool): Keep a pool of connections to other Tarantool instances
-- [shard](https://github.com/tarantool/shard): Automatically distribute data across multiple instances
+- [vshard](https://github.com/tarantool/vshard): Automatically distribute data across multiple instances
 - [http](https://github.com/tarantool/http): Embedded HTTP server with flask-style routing support
 - [curl](https://github.com/tarantool/curl): HTTP client based on libcurl
 - [pg](https://github.com/tarantool/pg): Query PostgreSQL right from Tarantool
